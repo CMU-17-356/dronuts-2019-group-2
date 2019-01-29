@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "author": "",
   "license": "ISC",
@@ -19,5 +19,16 @@
     "eslint-plugin-standard": "^4.0.0",
     "jest": "^24.0.0"
   },
-  "description": ""
+  "description": "In order to get ready to write productive code, complete the following steps during Sprint 0:",
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CMU-17-356/dronuts-2019-group-2.git"
+  },
+  "bugs": {
+    "url": "https://github.com/CMU-17-356/dronuts-2019-group-2/issues"
+  },
+  "homepage": "https://github.com/CMU-17-356/dronuts-2019-group-2#readme"
 }
