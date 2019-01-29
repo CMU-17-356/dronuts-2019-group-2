@@ -1,13 +1,12 @@
-var http = require('http');
-
-var server = http.createServer(function(request, response) {
-
-    response.writeHead(200, {"Content-Type": "text/plain"});
-    response.end("Hello World!");
-
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = __importDefault(require("express"));
+const app = express_1.default();
+app.get("/", (req, res) => {
+    res.status(200).send("Hello World!");
 });
-
-var port = process.env.PORT;
-server.listen(port);
-
-console.log("Server running at http://localhost:%d", port);
+exports.default = app;
+//# sourceMappingURL=app.js.map
