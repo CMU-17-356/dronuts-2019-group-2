@@ -1,12 +1,18 @@
-"use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-const app_1 = __importDefault(require("./app"));
+const express = require('express');
+const bodyParser = require('body-parser');
+const app = express();
 const port = 80;
-const server = app_1.default.listen(port, "0.0.0.0", () => {
-    console.log(`Example app listening on port ${port}`);
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+app.get('/api/hello', (req, res) => {
+  res.send({ express: 'Hello From Express' });
 });
-exports.default = server;
-//# sourceMappingURL=server.js.map
+app.post('/api/world', (req, res) => {
+  console.log(req.body);
+  res.send(
+    `I received your POST request. This is what you sent me: ${req.body.post}`,
+  );
+});
+
+app.listen(port, () => console.log(`Listening on port ${port}`));
