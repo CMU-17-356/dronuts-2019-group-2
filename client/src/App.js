@@ -1,23 +1,23 @@
 import React, { Component } from 'react';
-import { Route, Switch } from 'react-router-dom';
 import './App.css';
-import Home from './pages/Home';
-import List from './pages/List';
 
 class App extends Component {
+  state = {users: []}
+
+  componentDidMount() {
+    fetch('/users')
+      .then(res => res.json())
+      .then(users => this.setState({ users }));
+  }
+
   render() {
-    const App = () => (
-      <div>
-        <Switch>
-          <Route exact path='/' component={Home}/>
-          <Route path='/list' component={List}/>
-        </Switch>
-      </div>
-    )
     return (
-      <Switch>
-        <App/>
-      </Switch>
+      <div className="App">
+        <h1>Users</h1>
+        {this.state.users.map(user =>
+          <div key={user.id}>{user.username}</div>
+        )}
+      </div>
     );
   }
 }
