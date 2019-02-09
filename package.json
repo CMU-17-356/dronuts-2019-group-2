@@ -5,7 +5,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "jest",
     "eject": "react-scripts eject"
   },
   "author": "",
@@ -36,11 +36,5 @@
   "bugs": {
     "url": "https://github.com/CMU-17-356/dronuts-2019-group-2/issues"
   },
-  "homepage": "https://github.com/CMU-17-356/dronuts-2019-group-2#readme",
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ]
+  "homepage": "https://github.com/CMU-17-356/dronuts-2019-group-2#readme"
 }
