@@ -4,7 +4,7 @@
   "main": "app.js",
   "scripts": {
     "test": "jest",
-    "start": "node server.js"
+    "start": "node app.js"
   },
   "author": "",
   "license": "ISC",
@@ -24,6 +24,7 @@
   "directories": {
     "test": "test"
   },
+  
   "repository": {
     "type": "git",
     "url": "git+https://github.com/CMU-17-356/dronuts-2019-group-2.git"
@@ -33,3 +34,4 @@
   },
   "homepage": "https://github.com/CMU-17-356/dronuts-2019-group-2#readme"
 }
+
