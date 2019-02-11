@@ -1,19 +1,19 @@
 {
-  "name": "dronut",
+  "name": "node-react-docker-compose",
   "version": "1.0.0",
-  "main": "app.js",
+  "description": "A reference for running a node server and create-react-app app via docker-compose.",
+  "main": "src/index.js",
   "scripts": {
-    "test": "jest",
-    "client": "cd client && yarn start",
-    "server": "nodemon server.js",
-    "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\""
+    "start": "node src/index.js",
+    "test": "jest"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Peter Coles",
+  "license": "MIT",
   "dependencies": {
     "express": "^4.16.4"
   },
   "devDependencies": {
+    "nodemon": "^1.14.7",
     "eslint": "^5.12.1",
     "eslint-config-standard": "^12.0.0",
     "eslint-plugin-import": "^2.15.0",
@@ -29,7 +29,6 @@
     "morgan": "~1.9.0",
     "concurrently": "^4.0.1"
   },
-  "description": "In order to get ready to write productive code, complete the following steps during Sprint 0:",
   "directories": {
     "test": "test"
   },

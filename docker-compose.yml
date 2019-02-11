@@ -1,9 +1,26 @@
-version: '3'
+version: '2'
 services:
-
-  your_app:
-    container_name: your_app
-    build: ./
+  server:
+    build:
+      context: ./server/
+    command: node src/index.js
+    volumes:
+      - ./server/:/usr/app
+      - /usr/app/node_modules
     ports:
-      - "80:80"
-    restart: always
+      - "8080:8080"
+    # env_file: ./server/.env # TODO - uncomment this to auto-load your .env file!
+    environment:
+      - NODE_ENV=development
+      - CHOKIDAR_USEPOLLING=true
+  client:
+    build:
+      context: ./client/
+    command: npm start
+    volumes:
+      - ./client/:/usr/app
+      - /usr/app/node_modules
+    depends_on:
+      - server
+    ports:
+      - "3000:3000"
