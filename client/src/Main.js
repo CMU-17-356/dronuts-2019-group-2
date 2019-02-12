@@ -15,7 +15,7 @@ class Main extends Component {
       <HashRouter>
         <div>
 
-          <h1>Dronuts</h1>
+              <center> <h1>Dronuts</h1> </center>
         
         <Navigation />
 

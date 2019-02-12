@@ -9,7 +9,6 @@ class Donut extends Component {
     const { id, name, info, img } = this.props;
     
     return (
-      <li id={id}>
         <span>
           <div className="donut-img">
             <img src={img} alt="Donut" height="80" width="80"/>
@@ -20,7 +19,6 @@ class Donut extends Component {
           </div>
           <button onClick={this.onDonutClick}>Add to Cart</button>
         </span>
-      </li>
     );
   }
 }
