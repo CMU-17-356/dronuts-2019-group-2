@@ -76,7 +76,7 @@ describe('Test customer', () => {
 		password: "42728ff2118430bdff5f9a189e0034ec",
 		phonenumber: "2125550123",
 		savedlocation: [40.400600,-80.102951],
-		paymentToken: "187e6faaefac17863"
+		paymentToken: "187e6faaefac17863",
 		orderHistory: [101121, 102214],
 		favorites: [101, 104]
 		}, data.user);
@@ -92,7 +92,7 @@ describe('Test customer', () => {
 		password: "42728ff2118430bdff5f9a189e0034ec",
 		phonenumber: "5550102",
 		savedlocation: [40.400600,-80.102951],
-		paymentToken: "187e6faaefac17863"
+		paymentToken: "187e6faaefac17863",
 		orderHistory: [101121, 102214],
 		favorites: [101, 104]
 
