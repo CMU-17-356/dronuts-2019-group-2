@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Button} from 'react-bootstrap';
 
 class Order extends Component {
   onOrderClick() {
@@ -25,7 +26,13 @@ class Order extends Component {
               {order}
             </ul>
           </div>
-          <button onClick={this.onOrderClick}>Complete order</button>
+          <Button variant="outline-primary" onClick={this.onOrderClick}>
+              Complete order
+
+          </Button>
+          <br />
+          <br />
+
         </span>
       // </li>
     );

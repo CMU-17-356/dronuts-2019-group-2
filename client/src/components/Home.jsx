@@ -1,22 +1,28 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import {Jumbotron, Button} from 'react-bootstrap';
 
+
 class Home extends Component {
   render() {
+
+
     return (
-      <Jumbotron>
-        <center> <h1>Welcome to Dronuts</h1>
-        <p>
-          This is a simple hero unit, a simple jumbotron-style component for calling
-          extra attention to featured content or information.
-        </p>
-        <p>
-          <Button variant="primary">Click here to Shop</Button>
-        </p>
-         </center>
-      </Jumbotron>
+
+          <Jumbotron>
+            <center> <h1>Welcome to Dronuts</h1>
+            <p>
+              We are a startup company that delivers donuts to you with drones! 
+            </p>
+            <p>
+             <Link to={'/shop'}> <Button variant="primary">
+Shop Now</Button></Link>
+            </p>
+             </center>
+
+          </Jumbotron>
+
     );
   }
 }

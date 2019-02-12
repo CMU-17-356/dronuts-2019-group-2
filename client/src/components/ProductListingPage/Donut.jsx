@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Button} from 'react-bootstrap';
 
 class Donut extends Component {
   onDonutClick() {
@@ -17,7 +18,8 @@ class Donut extends Component {
           <div className="donut-info">            
             <p>{info}</p>
           </div>
-          <button onClick={this.onDonutClick}>Add to Cart</button>
+
+        <Button variant="outline-primary" onClick={this.onOrderClick}> Add to Cart </Button>
         </span>
     );
   }
