@@ -5,7 +5,7 @@ const path = require('path');
 
 // Constants
 const PORT = 80;
-const HOST = '104.42.146.209';
+// const HOST = '104.42.146.209';
 
 const CLIENT_BUILD_PATH = path.join(__dirname, '../../client/build');
 
@@ -29,5 +29,5 @@ app.get('*', function(request, response) {
   response.sendFile(path.join(CLIENT_BUILD_PATH, 'index.html'));
 });
 
-app.listen(PORT, HOST);
-console.log(`Running on http://${HOST}:${PORT}`);
+app.listen(PORT);
+console.log(`Running on http://localhost:${PORT}`);
