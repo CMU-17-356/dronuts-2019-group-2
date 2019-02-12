@@ -14,7 +14,7 @@ class Order extends Component {
     )
     
     return (
-      <li id={id}>
+      // <li id={id}>
         <span>
           <div className="drone">
             <h3>Drone {drone}</h3>
@@ -27,7 +27,7 @@ class Order extends Component {
           </div>
           <button onClick={this.onOrderClick}>Complete order</button>
         </span>
-      </li>
+      // </li>
     );
   }
 }

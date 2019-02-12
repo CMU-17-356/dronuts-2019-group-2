@@ -19,15 +19,6 @@ class Main extends Component {
         
         <Navigation />
 
-          <ul className="header">
-            <li><NavLink to="/">Shop</NavLink></li>
-            <li><NavLink to="/orders">Orders</NavLink></li>
-            <li><NavLink to="/manage">Manager View</NavLink></li>
-          </ul>
-          <div className="content">
-            <Route exact path="/" component={ProductListingPage}/>
-            <Route path="/orders" component={OrderListingPage}/>
-          </div>
         </div>
       </HashRouter>
     );
