@@ -25,7 +25,7 @@ const customerData = Joi.object({
 	name: Joi.string().min(2).max(30), //Customer's name (first last)
 	email: Joi.string().email().required(), //Customer's contact email
 	password: Joi.string(), // hashed, salted password
-	phonenumber: Joi.string().regex(\d{10}$), // Customer's contact phone number, no - or () characters
+	phonenumber: Joi.string().regex(/d{10}$/), // Customer's contact phone number, no - or () characters
 	savedlocation: [Joi.number(),Joi.number()], // Customer's saved delivery location
 	paymentToken: Joi.string(), //payment token from Commerce Friend
 	orderHistory: Joi.array().items( Joi.number().integer() ), //array of orderIDs 
