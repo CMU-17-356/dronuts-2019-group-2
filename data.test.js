@@ -1,5 +1,5 @@
 
-var data = require('dataSchema.js');
+var data = require('./dataSchema.js');
 
 
 describe('Test donut', () => {
