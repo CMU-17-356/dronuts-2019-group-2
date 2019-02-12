@@ -1,12 +1,15 @@
-FROM node:9.4.0-alpine
+FROM node:8-alpine
+MAINTAINER dronuts_4
 
-WORKDIR /usr/app
+# Change working directory
+WORKDIR /usr/src/app
 
-COPY package*.json ./
-RUN npm install -qy
-
+# Install App Dependencies
 COPY . .
+RUN npm install
+
+# Copy App Source
+#TODO Run any build scripts here
 
 EXPOSE 80
-
-CMD ["npm", "start"]
+CMD [ "npm", "start" ]
