@@ -1,134 +1,125 @@
-# dronut-starter
-In order to get ready to write productive code, complete the following steps during Sprint 0:
 
-### Repository Setup
-1. Create a new team and GitHub repository for your project using [GitHub classroom](https://classroom.github.com/g/PtX0YpR0).
-Your associated *cmu email* should show up in a listing and you can link your GitHub account.
-Subsequent members should choose to join an existing team using the same link.
-You may want to name your repository something like `foobarbaz`, which
-will end up as `dronuts-2019-foobarbaz`, aka your *$respository_name*.
+Node + Create React App + Docker Compose
+========================================
 
-We're ok with you keeping your project public, but you can make it private if you so desire. Don't
-forget to add `.gitignore` and `License** files!
+A project that runs a Node server and a create-react-app app via two separate containers, using Docker Compose.
 
-2. In addition, you should setup any tools needed for collaboration, issue
-tracking and project managment; Slack, Jira, GitHub Issues, ZenHub, Trello,
-whatever it is your team would like to use.
 
-If you're new to Git and GitHub, we highly recommend reading and running through
-these two links:
+## Development
 
-* [GitHub Learning Lab](https://lab.github.com/)
-* [GitHub Guides](https://guides.github.com/)
+```
+docker-compose up
+```
 
-### Travis CI
-1. Enable travis-ci.com for this repository. To do this, go to the [travis website](https://travis-ci.com),
-and grant Travis permissions over your repository.
+For development, the `server/` and `client/` directories have their own docker containers, which are configured via the `docker-compose.yml` file.
 
-### Initialize NodeJS/NPM
-1. If you haven't already, install NodeJS and NPM on your computer.
+The client server is spun up at `localhost:3000` and it proxies internally to the server using the linked name as `server:8080`.
 
-2. Initialize your repository for NPM by running `npm init`. This will generate a `package.json` file in your repository.
+The local directories are mounted into the containers, so changes will reflect immediately. However, changes to package.json will likely need to a rebuild: `docker-compose down && docker-compose build && docker-compose up`.
 
-### Choose a Web Framework and Install It
-Within the NodeJS runtime, there a many frameworks for creating
-server applications. For the purposes of this assignment, there are two options you should consider:
+### Notes
 
-* <b>Option 1: Express</b><br>
-The [Express Framework](https://expressjs.com/) is a general-purpose web
-development framework with widespread adoption.
+#### Adding new scss files
 
-* <b>Option 2: Loopback</b><br>
-The [Loopback Framework](https://loopback.io/) is a purpose-built REST API framework, with a smaller user base.
+The `node-sass` watch feature does not notice new files. In order to get new files working, restart the client container:
 
-As a deliverable of sprint 0, you will be asked to compare these frameworks. You
-should familiarize yourself with both projects in order to justify your decision.
-Once the decision is made, install it in your groups repository.
+```
+docker-compose restart client
+```
 
-### QA/Helpful Tools
-1. You should install a linter for your repository, to help manage code style.
-We highly recommend [eslint](https://eslint.org/docs/user-guide/getting-started)
-or [tslint](https://palantir.github.io/tslint/) if you decide to use typescript.
+#### Installing npm dependencies
 
-To go a little further, we can use [eslint-watch](https://www.npmjs.com/package/eslint-watch) to automatically lint
-while we're programming:
+All changes to `node_modules` should happen *inside* the containers. Install any new dependencies by inside the container. You can do this via `docker-compose run`, but it’s easier to just upadte a running container and avoid having to rebuild everything:
 
-   > Success Condition:
-   > ```
-   > $ npm run lint (## which is calling esw -w src test)
-   > > ✓ Clean (10:12:27 AM)
-   > ```
+```
+docker-compose exec client
+```
 
-2. Because NodeJS projects have many dependencies, it is massively beneficial to
-use a tool to detect dependency updates and alert you as to potential
-vulnerabilities. Normally, we would recommend using a SaaS tool like
-[GreenKeeper](https://greenkeeper.io/) or [requires.io](https://requires.io/).
-However, if you're repository is private, these tools require payment. If
-that's the case, you should install [npm-check](https://www.npmjs.com/package/npm-check).
+Then inside:
 
-   > Success Condition:
-   > ```
-   > $ npm-check
-   > > ❤️  Your modules look amazing. Keep up the great work. ❤️
-   > ```
+```
+npm install --save <new_dependency>
+```
 
-3. You should setup a test framework within your application to help with later
-test-driven development. We'd suggest [Jest](https://jestjs.io/) (especially for React
-development). Another option is to go with the [Mocha](https://mochajs.org/)
-framework along with [Chai](http://chaijs.com/). Once installed, write a
-single test, which doesn't actually test anything (besides that your tests run).
+## Production
 
-    > Success Condition:
-    > ```
-    > $ npm run test
-    > > PASS test/routes.test.js
-    > > GET /
-    > > ✓ should render properly (853ms)
-    > > GET /list
-    > > ✓ should render properly with valid parameters (48ms)
-    > > ✓ should error without a valid parameter (29ms)
-    > > GET /404
-    > > ✓ should return 404 for non-existent URLs (61ms)
-    > > ...
-    > ```
+```
+docker-compose -f docker-compose.prod.yml up
+```
 
-4. Verify that the above tools and targets can be executed by TravisCI.
+For production, this uses the Dockerfile at the root of the repo. It creates a static build of the client React app and runs Express inside server, which handles both the API and serving of React files.
 
-5. Document the above tools in your README. Also update this boilerplate once
-it's no longer needed. We also recommend  [embedding the build status image](https://docs.travis-ci.com/user/status-images/)
-from Travis CI, to make it easier to track the status of your build.
+As a result, different code is executing to serve the React files, but all of the API calls should remain the same. The difference between development and production isn’t ideal, but it does offer the simplicity of having the entire app run in one server on one machine.
 
-### Docker
-1. Although Docker should already be configured (see `Dockerfile` and `docker-compose.yml`) as
-necessary, you may need to install the Docker Daemon on your machine to properly
-complete the assignment. Read the [get-started](https://www.docker.com/get-started) guide for downloading Docker
-locally.
+This is one of multiple ways a Node + React app could be setup, as suggested [here](https://daveceddia.com/create-react-app-express-production/):
 
-### Deployment
-1. You should have received an email about signing-up/accepting a assignment/lab
-from Microsoft, related to the class and registering with azure. Let us know 
-if you haven't. We recommend using the [Azure Cli](https://docs.microsoft.com/en-us/cli/azure/authenticate-azure-cli?view=azure-cli-latest) 
-to access your account info.
+*   __Keep them together__ - have Express serve both the API and React files
+*   __Split them apart__ - have Express API on one machine and the React files on another (e.g., on S3 and use CORS to access the API)
+*   __Put the API behind a proxy__ - use something like NGINX to proxy the Express API server and React static files separately
 
-2. Using your Azure credentials, follow [these instructions](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/docker-machine) to manually
-setup a Virtual Machine suitable for running Docker **with the following considerations**:
-  * Instead of `myvm` use your project team name as your Docker Machine name.
-  * Use "Standard_A1_v2" as the plan name / VM size.
-  * Before running docker-create (creating your VM), make sure to additionally
-  add the flag/option **--azure-resource-group cmu-17-356** when running the command.
-  * The full command you'll run should look something like this:
-    ```shell
-    docker-machine create -d azure \
-    --azure-subscription-id $sub \
-    --azure-ssh-user azureuser \
-    --azure-open-port 80 \
-    --azure-resource-group cmu-17-356 \
-    --azure-size "Standard_A1_v2" \
-    $repository_name
-     ```
-  * **stop before the step "run a container"**.
-  * Copy the IP address of your VM and your *$repository_name* (i.e. project/machine-name) into `.travis.yml`.
-  * If you've set that ENV var, Run `cp -r "$DOCKER_CERT_PATH" ./azure`to copy your deployment certificates
-  into your repository. Otherwise, you can run `cp -r ~/.docker/machine/machines/$repository_name/* ./azure`
+This project uses the “keep them together” approach. For better performance, you can set up a proxy (like Cloudflare) in between your server and the Internet to cache the static files. Or with some extra work you can fashion it to do either of the other two options.
 
-This should enable automatic deployment via Travis CI!
+
+## Notes
+
+### Using docker compose
+
+I have `comp` aliased to `docker-compose` on my computer.
+
+Start via:
+
+```
+comp up
+
+# or detached
+comp up -d
+```
+
+Run a container of the server image via:
+
+```
+comp run server /bin/bash
+```
+
+Check status:
+
+```
+comp ps
+```
+
+Stop:
+
+```
+comp down
+```
+
+Run the production image:
+
+```
+comp -f docker-compose.prod.yml up
+```
+
+NOTE: if any dependencies change in package.json files, you probably will need to rebuild the container for the changes to appear, e.g.,
+
+```
+comp down
+comp build
+comp up
+```
+
+
+### Setup references
+
+References for setting up a Node project with Docker and docker-compose:
+
+*   https://nodejs.org/en/docs/guides/nodejs-docker-webapp/
+*   https://blog.codeship.com/using-docker-compose-for-nodejs-development/
+*   http://jdlm.info/articles/2016/03/06/lessons-building-node-app-docker.html
+
+Express + React:
+
+*   https://daveceddia.com/create-react-app-express-production/
+*   http://ericsowell.com/blog/2017/5/16/create-react-app-and-express
+*   https://medium.freecodecamp.org/how-to-make-create-react-app-work-with-a-node-backend-api-7c5c48acb1b0
+*   https://medium.freecodecamp.org/how-to-host-a-website-on-s3-without-getting-lost-in-the-sea-e2b82aa6cd38
+
