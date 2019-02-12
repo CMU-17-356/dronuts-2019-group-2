@@ -12,24 +12,26 @@ class ProductListingPage extends Component {
   render() {
     return (
       <div className="plp">
-        <Donut
-          id="1"
-          name="Glazed"
-          info="Classic glazed donut."
-          img={glazed}
-        />
-        <Donut
-          id="2"
-          name="Chocolate-frosted"
-          info="Frosted over with a rich, smooth chocolate ganache."
-          img={chocofrosted}
-        />
-        <Donut
-          id="3"
-          name="Boston Cream"
-          info="Boston cream pie in donut form."
-          img={bostoncream}
-        />
+        <ul>
+          <Donut
+            id="1"
+            name="Glazed"
+            info="Classic glazed donut."
+            img={glazed}
+          />
+          <Donut
+            id="2"
+            name="Chocolate-frosted"
+            info="Frosted over with a rich, smooth chocolate ganache."
+            img={chocofrosted}
+          />
+          <Donut
+            id="3"
+            name="Boston Cream"
+            info="Boston cream pie in donut form."
+            img={bostoncream}
+          />
+        </ul>
       </div>
     )
   }
