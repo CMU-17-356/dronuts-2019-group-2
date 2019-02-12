@@ -6,6 +6,7 @@ import {
 } from "react-router-dom";
 import ProductListingPage from "./components/ProductListingPage/ProductListingPage";
 import OrderListingPage from "./components/OrderListingPage/OrderListingPage";
+import Navigation from './components/Navigation';
 
 
 class Main extends Component {
@@ -13,7 +14,11 @@ class Main extends Component {
     return (
       <HashRouter>
         <div>
+
           <h1>Dronuts</h1>
+        
+        <Navigation />
+
           <ul className="header">
             <li><NavLink to="/">Shop</NavLink></li>
             <li><NavLink to="/orders">Orders</NavLink></li>
