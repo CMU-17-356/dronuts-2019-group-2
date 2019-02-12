@@ -27,7 +27,8 @@
     "http-errors": "~1.6.2",
     "jade": "~1.11.0",
     "morgan": "~1.9.0",
-    "concurrently": "^4.0.1"
+    "concurrently": "^4.0.1",
+    "joi": "^14.3.1"
   },
   "directories": {
     "test": "test"
