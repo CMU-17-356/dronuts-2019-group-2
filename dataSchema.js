@@ -40,11 +40,11 @@ const orderData = Joi.object({
 	orderID: Joi.integer().positive().required(),
 	date: Joi.date().timestamp('unix'),  //date and time in unix timestamp format
 	customer: Joi.integer().positive(), //customerID
-	items: Joi.array().items( Joi.number().integer() ), //array of donutIDs
+	items: Joi.array().items( Joi.number().integer().required() ), //array of donutIDs
 	paymentToken: Joi.string(), //payment token from Commerce Friend
 	paid: Joi.boolean(), //true if order has been paid for, false otherwise
 	status: Joi.string().valid('pending-payment','queued', 'en-route', 'delivered', 'failed'), //order status
-	deliverylocation: [Joi.number(),Joi.number()] //location for delivery (coordinates)
+	deliverylocation: [Joi.number(),Joi.number().required()] //location for delivery (coordinates)
 
 
 })
