@@ -13,7 +13,7 @@ const donutData = Joi.object({
 
 	donutID: Joi.number().integer().positive().required(),
 	flavor: Joi.string(), //donut's flavor
-	price: Joi.number().precision(2), //donut's price, two decimals
+	price: Joi.number().positive().precision(2), //donut's price, two decimals
 	numAvailable: Joi.number().integer().positive(), // how many of these donuts are available in inventory
 	picture: Joi.string().uri(), // link to picture of the donut
 	description: Joi.string() // description of the donut
@@ -25,7 +25,7 @@ const customerData = Joi.object({
 	name: Joi.string().min(2).max(30), //Customer's name (first last)
 	email: Joi.string().email().required(), //Customer's contact email
 	password: Joi.string(), // hashed, salted password
-	phonenumber: Joi.string().regex(/d{10}$/), // Customer's contact phone number, no - or () characters
+	phonenumber: Joi.string().regex(/[0-9]{10}$/), // Customer's contact phone number, no - or () characters
 	savedlocation: Joi.array().items( Joi.number() ).length(2), // Customer's saved delivery location
 	paymentToken: Joi.string(), //payment token from Commerce Friend
 	orderHistory: Joi.array().items( Joi.number().integer() ), //array of orderIDs 
