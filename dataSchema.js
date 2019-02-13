@@ -4,7 +4,7 @@ const Joi = require('joi');
 
 const droneData = Joi.object({
 		droneID: Joi.number().integer().positive().required(),
-		location: [Joi.number(),Joi.number()], // last known location of the drone in coordinates
+		location: Joi.array().items( Joi.number() ).length(2), // last known location of the drone in coordinates
 		batteryLevel: Joi.number().precision(1).min(0).max(100), // battery level of drone 0.0-100.0
 		status: Joi.string().valid('charging', 'delivering', 'returning', 'ready', 'discharged', 'broken')
 })
@@ -26,7 +26,7 @@ const customerData = Joi.object({
 	email: Joi.string().email().required(), //Customer's contact email
 	password: Joi.string(), // hashed, salted password
 	phonenumber: Joi.string().regex(/d{10}$/), // Customer's contact phone number, no - or () characters
-	savedlocation: [Joi.number(),Joi.number()], // Customer's saved delivery location
+	savedlocation: Joi.array().items( Joi.number() ).length(2), // Customer's saved delivery location
 	paymentToken: Joi.string(), //payment token from Commerce Friend
 	orderHistory: Joi.array().items( Joi.number().integer() ), //array of orderIDs 
 	favorites: Joi.array().items( Joi.number().integer() ) //array of donutIDs
@@ -40,11 +40,11 @@ const orderData = Joi.object({
 	orderID: Joi.number().integer().positive().required(),
 	date: Joi.date().timestamp('unix'),  //date and time in unix timestamp format
 	customer: Joi.number().integer().positive(), //customerID
-	items: Joi.array().items( Joi.number().integer().required() ), //array of donutIDs
+	items: Joi.array().items( Joi.number().integer() ).required(), //array of donutIDs
 	paymentToken: Joi.string(), //payment token from Commerce Friend
 	paid: Joi.boolean(), //true if order has been paid for, false otherwise
 	status: Joi.string().valid('pending-payment','queued', 'en-route', 'delivered', 'failed'), //order status
-	deliverylocation: [Joi.number(),Joi.number().required()] //location for delivery (coordinates)
+	deliverylocation: Joi.array().items( Joi.number() ).length(2).required() //location for delivery (coordinates)
 
 
 })

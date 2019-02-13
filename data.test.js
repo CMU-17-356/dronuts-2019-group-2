@@ -13,7 +13,7 @@ describe('Test donut', () => {
 	numAvailable: 6,
 	picture: 'https://dronuts.co/img/glazed.png',
 	description: 'A classic glazed donut'
-	}, data.order);
+	}, data.donut);
     expect(result.error).toBe(null);
   });
 
@@ -26,8 +26,8 @@ describe('Test donut', () => {
 	numAvailable: 6,
 	picture: 'https://dronuts.co/img/glazed.png',
 	description: 'A classic glazed donut'
-	}, data.order);
-    expect(result.error).toBe(null);
+	}, data.donut);
+    expect(result.error).not.toBe(null);
   });
 });
 
@@ -79,7 +79,7 @@ describe('Test customer', () => {
 		paymentToken: "187e6faaefac17863",
 		orderHistory: [101121, 102214],
 		favorites: [101, 104]
-		}, data.user);
+		}, data.customer);
     expect(result.error).toBe(null);
   });
 
@@ -96,7 +96,7 @@ describe('Test customer', () => {
 		orderHistory: [101121, 102214],
 		favorites: [101, 104]
 
-		}, data.user);
+		}, data.customer);
     expect(result.error).not.toBe(null);
   });
 
