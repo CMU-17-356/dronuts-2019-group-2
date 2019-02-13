@@ -15,7 +15,7 @@ class Main extends Component {
         <div>
         
         <Navigation />
-        
+        <div class = "content"> </div>
 <div class="footer"> <br />
   <p> &copy; Dronut Team 2</p>
 </div>

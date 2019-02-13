@@ -20,6 +20,9 @@ class Donut extends Component {
           </div>
 
         <Button variant="outline-primary" onClick={this.onOrderClick}> Add to Cart </Button>
+        <br />
+        <br />
+
         </span>
     );
   }
