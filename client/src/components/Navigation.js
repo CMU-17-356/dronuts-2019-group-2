@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, Link, Redirect } from 'react-router-dom';
 import ProductListingPage from "./ProductListingPage/ProductListingPage";
 import OrderListingPage from "./OrderListingPage/OrderListingPage";
 import logo from '../img/dronut.png'
@@ -17,7 +17,9 @@ class Navigation extends Component {
 
 
         <div>
-        <center> <img src={logo} alt="Donut" height="80" width="200"/> </center> <br />
+        
+
+        <center> <Link to={'/home'}> <img src={logo} alt="Donut" height="80" width="200"/> </Link> </center>  <br />
 
           <nav className="navbar navbar-expand-lg ">
           <ul className="navbar-nav mr-auto">
@@ -34,6 +36,7 @@ class Navigation extends Component {
             <Route exact path="/shop" component={ProductListingPage}/>
             <Route path="/orders" component={OrderListingPage}/>
             <Route path="/home" component={Home}/>
+            <Redirect from="/" to="Home" />
 
 
           </Switch>
