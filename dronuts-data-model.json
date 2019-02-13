@@ -1,0 +1,94 @@
+drone{
+	
+	    "droneID": "integer",
+	    "location":["float","float"], //drone's last known location
+	    "batteryLevel": "float", //battery percentage 1-100
+	    "status": "string", //shows drone's current status i.e. charging, delivering, returning, waiting
+		
+}
+
+	EXAMPLE:
+		    {
+		    "droneID": "14",
+		    "location":["40.400600","-80.102951"], //drone's last known location
+		    "batteryLevel": "84.8", //battery percentage decimal i.e. .101, .919
+		    "status": "ready", //shows drone's current status i.e. charging, delivering, returning, ready
+			}
+
+
+
+donut{
+ 	
+		"donutID":"integer",
+		"flavor":"string",
+		"price":"float",
+		"numAvailable":"integer",
+		"picture":"url",
+		"description":"string"
+		
+}
+
+	EXAMPLE:
+			{ 
+			"donutID":"818",
+			"flavor":"glazed",
+			"price":"4.00",
+			"numAvailable":"16",
+			"picture":"dronuts.com/img/glazed.png",
+			"description":"A classic glazed donut"
+			}
+
+
+
+customer{
+		"customerID":"integer",
+		"name":"string",
+		"email":"string",
+		"password":"string", //salted and hashed pw
+		"phonenumber":"string",
+		"savedlocation":["latitude","longitude"],
+		"paymentToken":"string",
+		"orderHistory":["orderID","orderID"],
+		"favorites":["donutID","donutID"]
+	}
+
+	EXAMPLE:
+			{
+			"customerID":"23592581",
+			"name":"Arthur Weasley",
+			"email":"aweasley@gmail.com",
+			"password":"42728ff2118430bdff5f9a189e0034ec", //salted and hashed pw
+			"phonenumber":"2125550123",
+			"savedlocation":["40.400600","-80.102951"], //customer can enter home location
+			"paymentToken":"2342a34ff323bc3", //payment token from Commerce Friend
+			"orderHistory":["92983","100221"], //order id numbers
+			"favorites":["818","142"] //donut id numbers
+			}
+
+
+order{
+		"orderID":"integer",
+		"date":"string", 
+		"customer":"custID",
+		"items":["donutID","donutID"],
+		"paymentToken":"string",
+		"paid": "boolean", //true if order was successfully paid for
+		"status": "string", //in queue, en route, delivered, etc...
+		"deliverylocation":["latitude","longitude"]
+		}
+
+
+	EXAMPLE:
+			{
+			"orderID":"23425671",
+			"date":"1549924407", //unix timestamp date since epoch
+			"customer":"882192",
+			"items":["818","818"], //list of all donuts ordered, multiples included twice
+			"paymentToken":"2342a34ff323bc3", //payment token from Commerce Friend
+			"paid": "true", //true if order was successfully paid for
+			"status": "en-route", //in queue, en route, delivered, etc...
+			"deliverylocation":["40.400600","-80.102951"]
+			}
+
+
+
