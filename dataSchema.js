@@ -21,7 +21,7 @@ const donutData = Joi.object({
 
 const customerData = Joi.object({
 
-	customerID: Joi.integer().positive().required(),
+	customerID: Joi.number().integer().positive().required(),
 	name: Joi.string().min(2).max(30), //Customer's name (first last)
 	email: Joi.string().email().required(), //Customer's contact email
 	password: Joi.string(), // hashed, salted password
@@ -37,9 +37,9 @@ const customerData = Joi.object({
 
 const orderData = Joi.object({
 
-	orderID: Joi.integer().positive().required(),
+	orderID: Joi.number().integer().positive().required(),
 	date: Joi.date().timestamp('unix'),  //date and time in unix timestamp format
-	customer: Joi.integer().positive(), //customerID
+	customer: Joi.number().integer().positive(), //customerID
 	items: Joi.array().items( Joi.number().integer().required() ), //array of donutIDs
 	paymentToken: Joi.string(), //payment token from Commerce Friend
 	paid: Joi.boolean(), //true if order has been paid for, false otherwise
