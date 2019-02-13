@@ -1,3 +1,4 @@
+
 # Setup and build the client
 
 FROM node:9.4.0-alpine as client
@@ -21,8 +22,7 @@ COPY server/package*.json ./
 RUN npm install -qy
 COPY server/ ./
 
-ENV PORT 8000
 
-EXPOSE 8000
+EXPOSE 80
 
 CMD ["npm", "start"]

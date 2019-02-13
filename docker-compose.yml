@@ -3,12 +3,12 @@ services:
   server:
     build:
       context: ./server/
-    command: node src/index.js
+    command: /usr/app/node_modules/.bin/nodemon src/index.js
     volumes:
       - ./server/:/usr/app
       - /usr/app/node_modules
     ports:
-      - "8080:8080"
+      - "80:80"
     # env_file: ./server/.env # TODO - uncomment this to auto-load your .env file!
     environment:
       - NODE_ENV=development
