@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Switch, Route, Link, Redirect } from 'react-router-dom';
+import {BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import ProductListingPage from "./ProductListingPage/ProductListingPage";
 import OrderListingPage from "./OrderListingPage/OrderListingPage";
 import logo from '../img/dronut.png'
-
 import Home from "./Home";
 
 class Navigation extends Component {
@@ -12,7 +11,7 @@ class Navigation extends Component {
   }
   render() {
     return (
-    <Router>
+    <Router >
 
 
 
@@ -36,9 +35,6 @@ class Navigation extends Component {
             <Route exact path="/shop" component={ProductListingPage}/>
             <Route path="/orders" component={OrderListingPage}/>
             <Route path="/home" component={Home}/>
-            <Redirect from="/" to="Home" />
-
-
           </Switch>
         </div>
       </Router>

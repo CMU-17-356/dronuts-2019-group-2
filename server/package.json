@@ -10,8 +10,12 @@
   "author": "Peter Coles",
   "license": "MIT",
   "dependencies": {
-    "express": "^4.16.2",
-    "jest": "^24.0.0"
+    "bluebird": "^3.5.3",
+    "express": "^4.16.4",
+    "jest": "^24.0.0",
+    "pg": "^7.8.1",
+    "pg-promise": "^5.9.7",
+    "sequelize": "^4.42.0"
   },
   "devDependencies": {
     "nodemon": "^1.18.10"
