@@ -6,8 +6,13 @@ var options = {
 };
 
 var pgp = require('pg-promise')(options);
+var fs = require('fs');
+
 var connectionString = 'postgres://dronut:dronut@db:5432/api';
+
 var db = pgp(connectionString);
+
+var sql = fs.readFileSync('customers.sql').toString();
 
 // add query functions
 
@@ -21,7 +26,7 @@ module.exports = {
 
 
 function getAllCustomers(req, res, next) {
-  db.any('select * from customer')
+  db.any('select * from Customer')
     .then(function (data) {
       res.status(200)
         .json({
@@ -39,7 +44,7 @@ function getAllCustomers(req, res, next) {
 
 function getSingleCustomer(req, res, next) {
   var custID = parseInt(req.params.id);
-  db.one('select * from customer where id = $1', custID)
+  db.one('select * from Customer where id = $1', custID)
     .then(function (data) {
       res.status(200)
         .json({
