@@ -13,7 +13,6 @@ const PORT = process.env.PORT || 8080;
 const HOST = '0.0.0.0';
 const CLIENT_BUILD_PATH = path.join(__dirname, '../../client/build');
 
-
 // App
 const app = express();
 
@@ -36,14 +35,14 @@ app.use(express.static(CLIENT_BUILD_PATH));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// API routes
-app.use('/api/Books', bookRouter);
-
-
 // All remaining requests return the React app, so it can handle routing.
 app.use('*', function(request, response) {
   response.sendFile(path.join(CLIENT_BUILD_PATH, 'index.html'));
 });
+
+// API routes
+app.use('/api/Books', bookRouter);
+
 
 app.listen(PORT, HOST);
 console.log(`Running on http://${HOST}:${PORT}`);
