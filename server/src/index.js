@@ -2,41 +2,44 @@
 
 const express = require('express');
 const path = require('path');
-var router = express.Router();
+//addon mongodb
+import mongoose from 'mongoose';
+import bodyParser from 'body-parser';
+import bookRouter from './routes/bookRouter';
 
 
 // Constants
 const PORT = process.env.PORT || 8080;
 const HOST = '0.0.0.0';
-
 const CLIENT_BUILD_PATH = path.join(__dirname, '../../client/build');
+
 
 // App
 const app = express();
 
 // Static files
-app.use(express.static(CLIENT_BUILD_PATH));
 var router = express.Router();
 
-var db = require('../queries');
+//addon mongodb
+const db = mongoose.connect("mongodb://dronut:dronut@startups-shard-00-00-1kerq.azure.mongodb.net:27017,startups-shard-00-01-1kerq.azure.mongodb.net:27017,startups-shard-00-02-1kerq.azure.mongodb.net:27017/test?ssl=true&replicaSet=startups-shard-0&authSource=admin&retryWrites=true");
+// setting body parser middleware 
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
-// API
-app.get('/api/customers', db.getAllCustomers);
-app.get('/api/customers/:id', db.getSingleCustomer);
-app.post('/api/customers', db.createCustomer);
-app.put('/api/customers/:id', db.updateCustomer);
-app.delete('/api/customers/:id', db.removeCustomer);
+// API routes
+app.use('/api/books', bookRouter);
 
 
-function getAllCustomers(req, res, next) {};
-function getSingleCustomer(req, res, next) {};
-function createCustomer(req, res, next){};
-function updateCustomer(req, res, next) {};
-function removeCustomer(req, res, next) {};
+app.use(express.static(CLIENT_BUILD_PATH));
 
-app.get('hi', function(request, response) {
-	console.log("hi")
-});
+// setting body parser middleware 
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+// API routes
+app.use('/api/Books', bookRouter);
+
+
 // All remaining requests return the React app, so it can handle routing.
 app.use('*', function(request, response) {
   response.sendFile(path.join(CLIENT_BUILD_PATH, 'index.html'));
