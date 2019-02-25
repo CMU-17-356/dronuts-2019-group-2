@@ -14,9 +14,6 @@ class Main extends Component {
       // .then(res => res.json()) // comment this out for now
       .then(res => res.text())          // convert to plain text
       .then(customers => this.setState({ customers }));
-   
-
-
   }
 
 
