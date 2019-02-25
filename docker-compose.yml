@@ -11,8 +11,11 @@ services:
       - "8080:8080"
     # env_file: ./server/.env # TODO - uncomment this to auto-load your .env file!
     environment:
-      - NODE_ENV=development
-      - CHOKIDAR_USEPOLLING=true
+      DATABASE_URL: postgres://dronut:dronut@db:5432/api
+      PORT: 8080
+
+    links:
+      - db
   client:
     build:
       context: ./client/
@@ -24,3 +27,13 @@ services:
       - server
     ports:
       - "3000:3000"
+  db: 
+    image: postgres
+    expose: 
+      - 5432
+    environment:
+      POSTGRES_PASSWORD: dronut
+      POSTGRES_USER: dronut
+      POSTGRES_DB: api
+
+
