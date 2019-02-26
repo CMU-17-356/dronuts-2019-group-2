@@ -21,6 +21,11 @@ code {
   overflow-y: scroll; 
 }
 
+.logo{
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
 .footer {
    position: fixed;
    left: 0;
@@ -38,6 +43,11 @@ code {
 
 .navbarx {
   color: white !important;
+}
+
+.navbarx:hover {
+  background: #F9BBDD;
+  border-radius: 4px;
 }
 
 .navbarxr {

@@ -20,6 +20,7 @@ class ProductListingPage extends Component {
                 name="Glazed"
                 info="Classic glazed donut."
                 img={glazed}
+                price= "2.50"
               />
           </Col>
           <Col>
@@ -29,6 +30,7 @@ class ProductListingPage extends Component {
                 name="Chocolate-frosted"
                 info="Frosted over with a rich, smooth chocolate ganache."
                 img={chocofrosted}
+                price="3.00"
               />
           </Col>
           <Col>
@@ -37,117 +39,11 @@ class ProductListingPage extends Component {
                 name="Boston Cream"
                 info="Boston cream pie in donut form."
                 img={bostoncream}
+                price="4.00"
               />
           </Col>
         </Row> 
-                <Row>
-          <Col>
-              <Donut
-                id="1"
-                name="Glazed"
-                info="Classic glazed donut."
-                img={glazed}
-              />
-          </Col>
-          <Col>
-
-              <Donut
-                id="2"
-                name="Chocolate-frosted"
-                info="Frosted over with a rich, smooth chocolate ganache."
-                img={chocofrosted}
-              />
-          </Col>
-          <Col>
-              <Donut
-                id="3"
-                name="Boston Cream"
-                info="Boston cream pie in donut form."
-                img={bostoncream}
-              />
-          </Col>
-        </Row> 
-                <Row>
-          <Col>
-              <Donut
-                id="1"
-                name="Glazed"
-                info="Classic glazed donut."
-                img={glazed}
-              />
-          </Col>
-          <Col>
-
-              <Donut
-                id="2"
-                name="Chocolate-frosted"
-                info="Frosted over with a rich, smooth chocolate ganache."
-                img={chocofrosted}
-              />
-          </Col>
-          <Col>
-              <Donut
-                id="3"
-                name="Boston Cream"
-                info="Boston cream pie in donut form."
-                img={bostoncream}
-              />
-          </Col>
-        </Row> 
-                        <Row>
-          <Col>
-              <Donut
-                id="1"
-                name="Glazed"
-                info="Classic glazed donut."
-                img={glazed}
-              />
-          </Col>
-          <Col>
-
-              <Donut
-                id="2"
-                name="Chocolate-frosted"
-                info="Frosted over with a rich, smooth chocolate ganache."
-                img={chocofrosted}
-              />
-          </Col>
-          <Col>
-              <Donut
-                id="3"
-                name="Boston Cream"
-                info="Boston cream pie in donut form."
-                img={bostoncream}
-              />
-          </Col>
-        </Row> 
-        <Row>
-          <Col>
-              <Donut
-                id="1"
-                name="Glazed"
-                info="Classic glazed donut."
-                img={glazed}
-              />
-          </Col>
-          <Col>
-
-              <Donut
-                id="2"
-                name="Chocolate-frosted"
-                info="Frosted over with a rich, smooth chocolate ganache."
-                img={chocofrosted}
-              />
-          </Col>
-          <Col>
-              <Donut
-                id="3"
-                name="Boston Cream"
-                info="Boston cream pie in donut form."
-                img={bostoncream}
-              />
-          </Col>
-        </Row> 
+                
         </Container>
 
     )
