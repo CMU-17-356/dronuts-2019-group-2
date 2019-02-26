@@ -1,8 +1,4 @@
 import React, { Component } from 'react';
-<<<<<<< HEAD
-import {BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
-import ProductListingPage from "./ProductListingPage/ProductListingPage";
-=======
 
 import ReactDOM from "react-dom";
 import axios from "axios";
@@ -20,7 +16,6 @@ import { findDOMNode } from "react-dom";
 
 import { BrowserRouter as Router, Switch, Route, Link, Redirect } from 'react-router-dom';
 import ShopPage from "./Shop/ShopPage";
->>>>>>> dcb4832336093d82f59dbd7ca5fbaf0a2fe6d3e0
 import OrderListingPage from "./OrderListingPage/OrderListingPage";
 import logo from '../img/dronut.png'
 import Home from "./Home";
@@ -29,13 +24,6 @@ class Navigation extends Component {
     
   
   render() {
-<<<<<<< HEAD
-    return (
-    <Router >
-=======
-    
-//          <div className="nav-link navbarxr" > <Link to={'/cart'} className="nav-link navbarx">Cart</Link></div>
->>>>>>> dcb4832336093d82f59dbd7ca5fbaf0a2fe6d3e0
 
 
     return (
