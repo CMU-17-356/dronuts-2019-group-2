@@ -8,10 +8,6 @@ import Navigation from './components/Navigation';
 
 class Main extends Component {
 
-componentDidMount() {
-
-}
-
   render() {
     return (
       <HashRouter>

@@ -43,7 +43,7 @@ app.use('*', function(request, response) {
 });
 
 // API routes
-app.use('/api/donuts', donutRouter);
+// app.use('/api/donuts', donutRouter);
 
 
 app.listen(PORT, HOST);
