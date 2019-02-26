@@ -33,10 +33,6 @@ app.use('/api/users', userRouter);
 
 app.use(express.static(CLIENT_BUILD_PATH));
 
-// setting body parser middleware 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-
 // All remaining requests return the React app, so it can handle routing.
 app.use('*', function(request, response) {
   response.sendFile(path.join(CLIENT_BUILD_PATH, 'index.html'));
