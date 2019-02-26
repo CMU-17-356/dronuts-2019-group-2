@@ -9,8 +9,6 @@
   "author": "Peter Coles",
   "license": "MIT",
   "dependencies": {
-    "concurrently": "^4.0.1",
-    "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",
     "express": "~4.16.0",
     "http-errors": "~1.6.2",
@@ -18,9 +16,7 @@
     "jest": "^24.0.0",
     "joi": "^14.3.1",
     "morgan": "~1.9.0",
-    "pg": "^7.8.0",
-    "react-router-dom": "^4.3.1",
-    "sequelize": "^4.42.0"
+    "react-router-dom": "^4.3.1"
   },
   "directories": {
     "test": "test"
