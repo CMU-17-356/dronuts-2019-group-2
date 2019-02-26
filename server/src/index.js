@@ -5,7 +5,8 @@ const path = require('path');
 //addon mongodb
 import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
-import bookRouter from './routes/bookRouter';
+import donutRouter from './routes/donutRouter';
+import userRouter from './routes/userRouter';
 
 
 // Constants
@@ -26,7 +27,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // API routes
-app.use('/api/books', bookRouter);
+app.use('/api/donuts', donutRouter);
+app.use('/api/users', userRouter);
 
 
 app.use(express.static(CLIENT_BUILD_PATH));
@@ -41,7 +43,7 @@ app.use('*', function(request, response) {
 });
 
 // API routes
-app.use('/api/Books', bookRouter);
+app.use('/api/donuts', donutRouter);
 
 
 app.listen(PORT, HOST);
