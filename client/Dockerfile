@@ -6,7 +6,6 @@ WORKDIR /usr/src/app
 
 # Install App Dependencies
 COPY . .
-RUN npm rebuild node-sass
 RUN npm install
 RUN npm uninstall ajv
 RUN npm install ajv@6.8.1

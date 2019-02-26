@@ -19,6 +19,7 @@ import ShopPage from "./Shop/ShopPage";
 import OrderListingPage from "./OrderListingPage/OrderListingPage";
 import logo from '../img/dronut.png'
 import Home from "./Home";
+import Checkout from "./Shop/components/Checkout";
 
 class Navigation extends Component {
     
@@ -46,6 +47,7 @@ class Navigation extends Component {
             <Route exact path="/shop" component={ShopPage}/>
             <Route path="/orders" component={OrderListingPage}/>
             <Route path="/home" component={Home}/>
+            <Route path="/checkout" component={Checkout}/>
           </Switch>
         </div>
       </Router>

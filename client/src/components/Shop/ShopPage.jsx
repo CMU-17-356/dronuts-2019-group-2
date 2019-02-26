@@ -8,10 +8,6 @@ import Footer from "./components/Footer";
 import QuickView from "./components/QuickView";
 import "./scss/style.scss";
 
-
-import glazed from '../../img/glazed.jpg'
-import chocofrosted from '../../img/chocofrosted.jpg'
-import bostoncream from '../../img/bostoncream.jpg'
 import { Container, Row, Col } from 'react-bootstrap';
 
 
@@ -71,11 +67,7 @@ class ShopPage extends Component {
     this.sumTotalItems(this.state.cart);
     
   }
-  componentWillReceiveProps() {
-    this.setState({
-      cart: JSON.parse(localStorage.getItem("cart"))
-    });
-  }
+  
   // Add to Cart
   handleAddToCart(selectedProducts) {
     let cartItem = this.state.cart;

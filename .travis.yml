@@ -14,7 +14,9 @@ env:
     - DOCKER_MACHINE_NAME="group-2"
 
 script:
+  - npm rebuild node-sass
   - npm test
+  - docker system prune -a
   - docker-compose  --file docker-compose.prod.yml build
 
 deploy:

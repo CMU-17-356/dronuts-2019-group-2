@@ -4,6 +4,9 @@ import Counter from "./Counter";
 import EmptyCart from "../empty-states/EmptyCart";
 import CSSTransitionGroup from "react-transition-group/CSSTransitionGroup";
 import { findDOMNode } from "react-dom";
+import { BrowserRouter as Router, Switch, Route, Link, Redirect } from 'react-router-dom';
+import Checkout from "./Checkout";
+
 
 class Header extends Component {
   constructor(props) {
@@ -35,6 +38,11 @@ class Header extends Component {
         event.stopPropagation();
       }
     }
+  }
+  componentWillReceiveProps() {
+    this.setState({
+      cart: this.props.cartItems
+    });
   }
   componentDidMount() {
     document.addEventListener(
@@ -145,12 +153,14 @@ class Header extends Component {
             >
               <CartScrollBar>{view}</CartScrollBar>
               <div className="action-block">
+              <Link to={'/checkout'} >
                 <button
                   type="button"
                   className={this.state.cart.length > 0 ? " " : "disabled"}
                 >
                   PROCEED TO CHECKOUT
                 </button>
+                </Link>
               </div>
             </div>
           </div>
