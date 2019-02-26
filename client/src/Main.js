@@ -14,11 +14,12 @@ class Main extends Component {
       <HashRouter>
         <div>
         
-        <Navigation />
-        <div class = "content"> </div>
-<div class="footer"> <br />
-  <p> &copy; Dronut Team 2</p>
-</div>
+          <Navigation />
+          <div className = "content"> </div>
+          
+          <div className="footer"> <br />
+            <p> &copy; Dronut Team 2</p>
+          </div>
         </div>
       </HashRouter>
     );
