@@ -7,16 +7,17 @@ import Navigation from './components/Navigation';
 
 
 class Main extends Component {
-  state = {customers: []}
+  state = {donuts: []}
 
-  componentDidMount() {
-    fetch('/api/customers')
-      // .then(res => res.json()) // comment this out for now
-      .then(res => res.text())          // convert to plain text
-      .then(customers => this.setState({ customers }));
-  }
+componentDidMount() {
 
+fetch('/api/donuts')  
+ .then((response) => response.text())
+ .then((responseText) => {
+     console.log(JSON.parse(responseText));
+ })
 
+}
 
   render() {
     return (
