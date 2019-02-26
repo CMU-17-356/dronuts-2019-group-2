@@ -40,7 +40,7 @@ class ShopPage extends Component {
                   },
                   {
                     "id": 4,
-                    "name": "Signiture Sprinkles",
+                    "name": "Signature Sprinkles",
                     "price": 3.00,
                     "image": "/img/sprinkles.png",
                   }
