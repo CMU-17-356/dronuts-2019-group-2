@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import { DonutForm } from './DonutForm.jsx'
+import DonutForm from './DonutForm'
 
 
 class DonutNew extends Component {
   render() {
     return (
-      <DonutForm
-        new=true
+      <DonutForm // new form so pass in blank props
       />
     );
   }

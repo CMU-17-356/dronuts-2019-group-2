@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
-import { DonutForm } from './DonutForm.jsx'
+import DonutForm from './DonutForm'
 
 
-class DonutNew extends Component {
+class DonutEdit extends Component {
   render() {
     return (
-      <DonutForm
-        new=false
+      <DonutForm // for edit, pass in the donut's previous params as props
       />
     );
   }
 }
 
-export default DonutNew;
+export default DonutEdit;

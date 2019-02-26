@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './donut-form.css';
 
 class DonutForm extends Component {
   constructor(props) {
@@ -18,55 +19,70 @@ class DonutForm extends Component {
     this.setState({value: event.target.value});
   }
 
-  render() {
-    const { new } = this.props;
+  handleFileUpload(event) {
+    this.setState({value: event.target.value});
+  }
 
+  handleSubmit(event) {
+    alert('Donut has been added!');
+  }
+
+  render() {
     return (
-      <form>
-        <label>
-          Flavor:
+      <div className="donut-form">
+        <form>
+          <label className="left">
+            Flavor:
+          </label>
           <input
+            className="right"
             name="flavor"
             type="text"
             value={this.state.flavor}
             onChange={this.handleInputChange} />
-        </label>
-        <br />
-        <label>
-          Price:
+          <br />
+          <label className="left">
+            Price:
+          </label>
           <input
+            className="right"
             name="price"
             type="number"
             value={this.state.price}
             onChange={this.handleInputChange} />
-        </label>
-        <br />
-        <label>
-          Available in stock:
+          <br />
+          <label className="left">
+            Available in stock:
+          </label>
           <input
+            className="right"
             name="numAvailable"
             type="number"
             value={this.state.numAvailable}
             onChange={this.handleInputChange} />
-        </label>
-        <br />
-        <label>
-          Image Link:
+          <br />
+          <label className="left">
+            Image Link:
+          </label>
           <input
+            className="right"
             name="image"
-            type="url"
+            type="file"
             value={this.state.image}
-            onChange={this.handleInputChange} />
-        </label>
-        <br />
-        <label>
-          Description:
+            onChange={this.handleFileUpload} />
+          <br />
+          <label className="left">
+            Description:
+          </label>
           <textarea
+            className="right"
             name="description"
             value={this.state.description}
             onChange={this.handleInputChange} />
-        </label>
-      </form>
+          <br />
+          <input type="submit" value="Submit" />
+        </form>
+      </div>
     );
   }
 }

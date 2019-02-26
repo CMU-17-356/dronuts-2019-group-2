@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route, Link, Redirect } from 'react-ro
 import ProductListingPage from "./ProductListingPage/ProductListingPage";
 import OrderListingPage from "./OrderListingPage/OrderListingPage";
 import DonutNew from "./Inventory/DonutNew";
+import DonutList from "./Inventory/DonutList";
 import logo from '../img/dronut.png'
 
 import Home from "./Home";
@@ -25,7 +26,8 @@ class Navigation extends Component {
             <li><Link to={'/home'} className="nav-link navbarx"> Home </Link></li>
             <li><Link to={'/orders'} className="nav-link navbarx">Orders</Link></li>
             <li><Link to={'/shop'} className="nav-link navbarx">Shop</Link></li>
-            <li><Link to={'/inventory'} className="nav-link navbarx">Add Donut</Link></li>
+            <li><Link to={'/inventory'} className="nav-link navbarx">Inventory</Link></li>
+            <li><Link to={'/add'} className="nav-link navbarx">Add Donut</Link></li>
           </ul>
 
           <div onClick={this.onCartClick} className="nav-link navbarxr" > Cart</div>
@@ -36,7 +38,8 @@ class Navigation extends Component {
             <Route exact path="/shop" component={ProductListingPage}/>
             <Route path="/orders" component={OrderListingPage}/>
             <Route path="/home" component={Home}/>
-            <Route path="/inventory" component={DonutNew}/>
+            <Route path="/inventory" component={DonutList}/>
+            <Route path="/add" component={DonutNew}/>
             <Redirect from="/" to="Home" />
 
 
