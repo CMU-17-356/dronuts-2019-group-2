@@ -16,7 +16,7 @@ env:
 script:
   - npm rebuild node-sass
   - npm test
-  - docker system prune -a
+  - docker system prune -a -y
   - docker-compose  --file docker-compose.prod.yml build
 
 deploy:
