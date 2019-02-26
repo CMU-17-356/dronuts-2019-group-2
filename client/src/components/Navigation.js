@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Switch, Route, Link, Redirect } from 'react-ro
 import ProductListingPage from "./ProductListingPage/ProductListingPage";
 import OrderListingPage from "./OrderListingPage/OrderListingPage";
 import DonutNew from "./Inventory/DonutNew";
+import DonutEdit from "./Inventory/DonutEdit";
+import DonutShow from "./Inventory/DonutShow";
 import DonutList from "./Inventory/DonutList";
 import logo from '../img/dronut.png'
 
@@ -40,6 +42,8 @@ class Navigation extends Component {
             <Route path="/home" component={Home}/>
             <Route path="/inventory" component={DonutList}/>
             <Route path="/add" component={DonutNew}/>
+            <Route path="/edit" component={DonutEdit}/>
+            <Route path="/show" component={DonutShow}/>
             <Redirect from="/" to="Home" />
 
 

@@ -8,3 +8,21 @@
   color: white;
   padding: 10px;
 }
+
+h2 {
+  color: white;
+  margin: auto;
+}
+
+form {
+  padding: 10px;
+}
+
+.left {
+  margin-left: 0;
+}
+
+.right {
+  margin-right: 0;
+  float: right;
+}

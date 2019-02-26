@@ -30,6 +30,7 @@ class DonutForm extends Component {
   render() {
     return (
       <div className="donut-form">
+        <h2>Add a Donut</h2>
         <form>
           <label className="left">
             Flavor:
@@ -65,7 +66,7 @@ class DonutForm extends Component {
             Image Link:
           </label>
           <input
-            className="right"
+            className="form-control-file outline-primary"
             name="image"
             type="file"
             value={this.state.image}
@@ -75,12 +76,14 @@ class DonutForm extends Component {
             Description:
           </label>
           <textarea
-            className="right"
+            className="form-control"
+            rows="3"
             name="description"
             value={this.state.description}
             onChange={this.handleInputChange} />
           <br />
-          <input type="submit" value="Submit" />
+          <input className="outline-primary" type="submit" value="Submit" />
+          <br />
         </form>
       </div>
     );
