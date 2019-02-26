@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Switch, Route, Link, Redirect } from 'react-router-dom';
+import {BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import ProductListingPage from "./ProductListingPage/ProductListingPage";
 import OrderListingPage from "./OrderListingPage/OrderListingPage";
 import DonutNew from "./Inventory/DonutNew";
@@ -7,7 +7,6 @@ import DonutEdit from "./Inventory/DonutEdit";
 import DonutShow from "./Inventory/DonutShow";
 import DonutList from "./Inventory/DonutList";
 import logo from '../img/dronut.png'
-
 import Home from "./Home";
 
 class Navigation extends Component {
@@ -16,7 +15,7 @@ class Navigation extends Component {
   }
   render() {
     return (
-    <Router>
+    <Router >
 
         <div>
 
