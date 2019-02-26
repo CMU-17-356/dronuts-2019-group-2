@@ -28,7 +28,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // API routes
 app.use('/api/donuts', donutRouter);
-app.use('/api/users', userRouter);
 
 
 app.use(express.static(CLIENT_BUILD_PATH));
