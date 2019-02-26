@@ -19,12 +19,25 @@ class DonutForm extends Component {
     this.setState({value: event.target.value});
   }
 
-  handleFileUpload(event) {
-    this.setState({value: event.target.value});
-  }
-
   handleSubmit(event) {
-    alert('Donut has been added!');
+    event.preventDefault();
+
+    fetch('http://localhost:3000/api/', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        flavor: this.state.flavor,
+        price: this.state.price,
+        numAvailable: this.state.numAvailable,
+        image: this.state.image,
+        description: this.state.description
+      })
+    })
+
+    alert("Donut added!");
   }
 
   render() {
@@ -33,7 +46,7 @@ class DonutForm extends Component {
     return (
       <div className="donut-form">
         <h2>Add a Donut</h2>
-        <form>
+        <form onSubmit={this.handleSubmit}>
           <label className="left">
             Flavor:
           </label>
@@ -65,14 +78,14 @@ class DonutForm extends Component {
             onChange={this.handleInputChange} />
           <br />
           <label className="left">
-            Image Link:
+            Image Path:
           </label>
           <input
-            className="form-control-file outline-primary"
+            className="right"
             name="image"
-            type="file"
+            type="text"
             value={this.state.image}
-            onChange={this.handleFileUpload} />
+            onChange={this.handleInputChange} />
           <br />
           <label className="left">
             Description:
