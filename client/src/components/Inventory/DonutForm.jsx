@@ -6,8 +6,8 @@ class DonutForm extends Component {
     super(props);
     this.state = {
       flavor: '',
-      price: 0,
-      numAvailable: 0,
+      price: '',
+      numAvailable: '',
       image: '', // uri resource
       description: ''
     };
@@ -28,6 +28,8 @@ class DonutForm extends Component {
   }
 
   render() {
+    this.state = this.props
+
     return (
       <div className="donut-form">
         <h2>Add a Donut</h2>
@@ -48,7 +50,7 @@ class DonutForm extends Component {
           <input
             className="right"
             name="price"
-            type="number"
+            type="text"
             value={this.state.price}
             onChange={this.handleInputChange} />
           <br />
@@ -58,7 +60,7 @@ class DonutForm extends Component {
           <input
             className="right"
             name="numAvailable"
-            type="number"
+            type="text"
             value={this.state.numAvailable}
             onChange={this.handleInputChange} />
           <br />
