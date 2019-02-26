@@ -1,9 +1,6 @@
 import React, { Component } from "react";
-import CartScrollBar from "./CartScrollBar";
-import Counter from "./Counter";
 import EmptyCart from "../empty-states/EmptyCart";
 import CSSTransitionGroup from "react-transition-group/CSSTransitionGroup";
-import { findDOMNode } from "react-dom";
 import "../scss/style.scss";
 
 
@@ -229,17 +226,17 @@ class Form extends React.Component {
         
         <Input
           hasLabel='true'
-          htmlFor='passwordInput'
-          label='Password input'
+          htmlFor='textInput'
+          label='Address'
           required='true'
-          type='password'
+          type='text'
         />
         
         <Select
           hasLabel='true'
           htmlFor='select'
-          label='Select'
-          options='one, two, three, option four, five'
+          label='Delivery Time'
+          options='ASAP, 2:00pm, 2:30pm, 3:00pm, 3:30pm, 4:00pm'
           required='true'
         />
         
@@ -263,6 +260,9 @@ class Checkout extends Component {
       totalAmount: 0
     };
   }
+
+  financial = (x) => Number.parseFloat(x).toFixed(2);
+
   sumTotalAmount() {
     let total = 0;
     let cart = this.state.cart;
@@ -273,8 +273,11 @@ class Checkout extends Component {
       totalAmount: total
     });
   }
-  render() {
+  componentWillMount(){
     this.sumTotalAmount();
+
+  }
+  render() {
     let cartItems;
     cartItems = this.state.cart.map(product => {
       return (
@@ -282,13 +285,13 @@ class Checkout extends Component {
           <img className="product-image" src={product.image} />
           <div className="product-info">
             <p className="product-name">{product.name}</p>
-            <p className="product-price">{product.price}</p>
+            <p className="product-price">{this.financial(product.price)}</p>
           </div>
           <div className="product-total">
             <p className="quantity">
               {"Qty: "}{product.quantity} {" "}
             </p>
-            <p className="amount">{product.quantity * product.price}</p>
+            <p className="amount">{this.financial(product.quantity * product.price)}</p>
           </div>
           
         </li>
@@ -307,16 +310,24 @@ class Checkout extends Component {
           className="cart-checkout"
         >
           {cartItems}
+          <div className="cart-total">
+          <h5>Total: ${this.financial(this.state.totalAmount)}</h5>
+          </div>
         </CSSTransitionGroup>
       );
     }
     return (
         <div className="checkout">
             
-            {view}
-
+            
+        <div className="form-container">
           <div className="checkout-form">
             <Form />
+          </div>
+        </div>
+
+          <div className="checkout-cart">
+            {view}
           </div>
 
 

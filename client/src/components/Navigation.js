@@ -20,12 +20,34 @@ import OrderListingPage from "./OrderListingPage/OrderListingPage";
 import logo from '../img/dronut.png'
 import Home from "./Home";
 import Checkout from "./Shop/components/Checkout";
+import Login from "./Login";
+import Cookies from 'universal-cookie';
+
 
 class Navigation extends Component {
-    
+    constructor(props) {
+    super(props);
+    this.state = { loginOpen: false };
+  }
+
+  toggleLogin = () => {
+    this.setState({
+      loginOpen: !this.state.loginOpen
+    });
+  }
   
+  logout() {
+    const cookies = new Cookies();
+    cookies.set("admin", false, {path: "/"});
+    window.location.reload();
+    window.alert("You were successfully logged out.")
+
+  }
+
   render() {
 
+    const cookies = new Cookies();
+    cookies.get('admin') ? console.log(cookies.get('admin')) : console.log("DIDNT WORK");
 
     return (
     <Router>
@@ -36,12 +58,18 @@ class Navigation extends Component {
           <nav className="navbar navbar-expand-lg ">
           <ul className="navbar-nav mr-auto">
             <li><Link to={'/home'} className="nav-link navbarx"> Home </Link></li>
-            <li><Link to={'/orders'} className="nav-link navbarx">Orders</Link></li>
+            {(cookies.get('admin') == 'true') ? <li><Link to={'/orders'} className="nav-link navbarx">Orders</Link></li> : "" }
             <li><Link to={'/shop'} className="nav-link navbarx">Shop</Link></li>
+            {(cookies.get('admin') == 'true') ? 
+            <li className="login-button nav-link navbarx" onClick={this.logout}>Logout</li> : 
+            <li className="login-button nav-link navbarx" onClick={this.toggleLogin}>Login</li> }
           </ul>
-        
-          
           </nav>
+        
+        <Login 
+          show={this.state.loginOpen} 
+          onClose={this.toggleLogin}>
+        </Login>
           
           <Switch>
             <Route exact path="/shop" component={ShopPage}/>

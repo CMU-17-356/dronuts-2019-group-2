@@ -4,7 +4,6 @@ import ReactDOM from "react-dom";
 import axios from "axios";
 import Header from "./components/Header";
 import Products from "./components/Products";
-import Footer from "./components/Footer";
 import QuickView from "./components/QuickView";
 import "./scss/style.scss";
 
@@ -62,6 +61,9 @@ class ShopPage extends Component {
     this.closeModal = this.closeModal.bind(this);
 
   }
+
+  financial = (x) => Number.parseFloat(x).toFixed(2);
+
   componentWillMount() {
     this.sumTotalAmount(this.state.cart);
     this.sumTotalItems(this.state.cart);
