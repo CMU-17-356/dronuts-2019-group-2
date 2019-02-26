@@ -259,11 +259,22 @@ class Checkout extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      cart: JSON.parse(localStorage.getItem("cart")) ? JSON.parse(localStorage.getItem("cart")) : []
+      cart: JSON.parse(localStorage.getItem("cart")) ? JSON.parse(localStorage.getItem("cart")) : [],
+      totalAmount: 0
     };
   }
-
+  sumTotalAmount() {
+    let total = 0;
+    let cart = this.state.cart;
+    for (var i = 0; i < cart.length; i++) {
+      total += cart[i].price * parseInt(cart[i].quantity);
+    }
+    this.setState({
+      totalAmount: total
+    });
+  }
   render() {
+    this.sumTotalAmount();
     let cartItems;
     cartItems = this.state.cart.map(product => {
       return (
