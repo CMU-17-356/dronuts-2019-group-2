@@ -7,15 +7,8 @@ import Navigation from './components/Navigation';
 
 
 class Main extends Component {
-  state = {donuts: []}
 
 componentDidMount() {
-
-fetch('/api/donuts')  
- .then((response) => response.text())
- .then((responseText) => {
-     console.log(JSON.parse(responseText));
- })
 
 }
 
