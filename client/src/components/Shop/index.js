@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import axios from "axios";
 import Header from "./components/Header";
 import Products from "./components/Products";
+
 import QuickView from "./components/QuickView";
 import "./scss/style.scss";
 
@@ -153,6 +154,7 @@ class App extends Component {
 
   render() {
     return (
+
          <Header
           cartBounce={this.state.cartBounce}
           total={this.state.totalAmount}
@@ -174,12 +176,12 @@ class App extends Component {
           updateQuantity={this.updateQuantity}
           openModal={this.openModal}
         />
+
         <QuickView
           product={this.state.quickViewProduct}
           openModal={this.state.modalActive}
           closeModal={this.closeModal}
         />
-      </div>
     );
   }
 }

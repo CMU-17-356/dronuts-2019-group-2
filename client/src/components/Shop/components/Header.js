@@ -39,6 +39,7 @@ class Header extends Component {
       }
     }
   }
+
   componentWillReceiveProps() {
     this.setState({
       cart: this.props.cartItems
@@ -153,6 +154,7 @@ class Header extends Component {
             >
               <CartScrollBar>{view}</CartScrollBar>
               <div className="action-block">
+
               <Link to={'/checkout'} >
                 <button
                   type="button"
@@ -160,6 +162,7 @@ class Header extends Component {
                 >
                   PROCEED TO CHECKOUT
                 </button>
+
                 </Link>
               </div>
             </div>

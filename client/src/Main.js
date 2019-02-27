@@ -7,11 +7,22 @@ import Navigation from './components/Navigation';
 
 
 class Main extends Component {
+  state = {users: []}
+
+  componentDidMount() {
+    fetch('/api/users')
+      // .then(res => res.json()) // comment this out for now
+      .then(res => res.text())          // convert to plain text
+      .then(users => this.setState({ users }));
+  }
+
+
 
   render() {
     return (
       <HashRouter>
         <div>
+
 
         <Navigation />
         <div className="content"> </div>

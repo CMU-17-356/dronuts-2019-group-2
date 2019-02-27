@@ -4,193 +4,137 @@ import Order from './Order.jsx';
 import { Container, Row, Col, Tabs, Tab  } from 'react-bootstrap';
 
 class OrderListingPage extends Component {
+
   render() {
     return (
       <div className="olp">
 
-      <Tabs defaultActiveKey="profile" id="uncontrolled-tab-example">
-  <Tab eventKey="home" title="Drone 1">
+      <Tabs defaultActiveKey="home" id="uncontrolled-tab-example">
+  <Tab eventKey="home" title="Not Packaged">
   <Container>
-  <Row>
-     <Col md={{ padding: 20}}>          
-      <Order
-          id="1"
-          drone="1"
-          donuts={[{id: 2, name:'Chocolate Frosted', quantity: 2},
-                  {id: 3, name:'Boston Cream', quantity: 1}]}
-          address="123 Main Street"
-      />
-    </Col>
-
-     <Col md={{ padding: 20}}>      
-        <Order
-            id="2"
-            drone="1"
-            donuts={[{id: 1, name:'Glazed', quantity: 3}, {id: 3, name:'Boston Cream', quantity: 1}]}
-            address="5000 Forbes Avenue"
-          />
-    </Col>
-     <Col md={{ padding: 20}}>
-          <Order
-            id="3"
-            drone="1"
-            donuts={[{id: 2, name:'Chocolate Frosted', quantity: 1},{id: 1, name:'Glazed', quantity: 2},]}
-            address="404 Wilkins Avenue"
-          />
-    </Col>
-  </Row>
-  <Row>
-   <Col md={{ padding: 20}}>
-            <Order
-            id="3"
+  <Order
+            id="1"
             drone="1"
             donuts={[{id: 1, name:'Glazed', quantity: 1}, {id: 2, name:'Chocolate Frosted', quantity: 2},]}
             address="400 Wilkins Avenue"
+            status = "packing"
           />
-  </Col>
-  
-   <Col md={{ padding: 20}}>
-
-            <Order
-            id="3"
-            drone="1"
-            donuts={[{id: 1, name:'Glazed', quantity: 1}, {id: 2, name:'Chocolate Frosted', quantity: 2},]}
-            address="400 Wilkins Avenue"
-          />
-  </Col>
-         <Col md={{ padding: 20}}>
-          <Order
-            id="3"
-            drone="1"
-            donuts={[{id: 1, name:'Glazed', quantity: 1}, {id: 2, name:'Chocolate Frosted', quantity: 2},]}
-            address="400 Wilkins Avenue"
-          />
-    </Col>
-  </Row>
-</Container>
-  </Tab>
-  <Tab eventKey="profile" title="Drone 2">
-  <Container>
-  <Row>
-     <Col md={{ padding: 20}}>          
-      <Order
-          id="1"
-          drone="2"
-          donuts={[{id: 2, name:'Chocolate Frosted', quantity: 2},
-                  {id: 3, name:'Boston Cream', quantity: 1}]}
-          address="123 Main Street"
-      />
-    </Col>
-
-     <Col md={{ padding: 20}}>      
-        <Order
+    <Order
             id="2"
             drone="2"
-            donuts={[{id: 1, name:'Glazed', quantity: 3}, {id: 3, name:'Boston Cream', quantity: 1}]}
-            address="5000 Forbes Avenue"
+            donuts={[{id: 1, name:'Glazed', quantity: 1}, {id: 2, name:'Chocolate Frosted', quantity: 2},{id: 3, name:'Boston Creme', quantity: 1}]}
+            address="400 Forbes Avenue"
+            status = "packing"
           />
-    </Col>
-     <Col md={{ padding: 20}}>
-          <Order
-            id="3"
-            drone="2"
-            donuts={[{id: 2, name:'Chocolate Frosted', quantity: 1},{id: 1, name:'Glazed', quantity: 2},]}
-            address="404 Wilkins Avenue"
-          />
-    </Col>
-  </Row>
-  <Row>
-   <Col md={{ padding: 20}}>
-            <Order
-            id="3"
-            drone="2"
+     <Order
+            id="1"
+            drone="3"
             donuts={[{id: 1, name:'Glazed', quantity: 1}, {id: 2, name:'Chocolate Frosted', quantity: 2},]}
             address="400 Wilkins Avenue"
-          />
-  </Col>
-  
-   <Col md={{ padding: 20}}>
+            status = "packing"
 
-            <Order
-            id="3"
-            drone="2"
-            donuts={[{id: 1, name:'Glazed', quantity: 1}, {id: 2, name:'Chocolate Frosted', quantity: 2},]}
-            address="400 Wilkins Avenue"
           />
-  </Col>
-         <Col md={{ padding: 20}}>
-          <Order
-            id="3"
-            drone="2"
-            donuts={[{id: 1, name:'Glazed', quantity: 1}, {id: 2, name:'Chocolate Frosted', quantity: 2},]}
-            address="400 Wilkins Avenue"
-          />
-    </Col>
-  </Row>
-</Container>
-  </Tab>
-  <Tab eventKey="contact" title="Drone 3">
-  <Container>
-  <Row>
-     <Col md={{ padding: 20}}>          
-      <Order
-          id="1"
-          drone="3"
-          donuts={[{id: 2, name:'Chocolate Frosted', quantity: 2},
-                  {id: 3, name:'Boston Cream', quantity: 1}]}
-          address="123 Main Street"
-      />
-    </Col>
+    <Order
+            id="2"
+            drone="1"
+            donuts={[{id: 1, name:'Glazed', quantity: 1}, {id: 2, name:'Chocolate Frosted', quantity: 2},{id: 3, name:'Boston Creme', quantity: 1}]}
+            address="400 Forbes Avenue"
+            status = "packing"
 
-     <Col md={{ padding: 20}}>      
-        <Order
+          />
+
+     <Order
+            id="1"
+            drone="2"
+            donuts={[{id: 1, name:'Glazed', quantity: 1}, {id: 2, name:'Chocolate Frosted', quantity: 2},]}
+            address="400 Wilkins Avenue"
+            status = "packing"
+
+          />
+    <Order
             id="2"
             drone="3"
-            donuts={[{id: 1, name:'Glazed', quantity: 3}, {id: 3, name:'Boston Cream', quantity: 1}]}
-            address="5000 Forbes Avenue"
-          />
-    </Col>
-     <Col md={{ padding: 20}}>
-          <Order
-            id="3"
-            drone="3"
-            donuts={[{id: 2, name:'Chocolate Frosted', quantity: 1},{id: 1, name:'Glazed', quantity: 2},]}
-            address="404 Wilkins Avenue"
-          />
-    </Col>
-  </Row>
-  <Row>
-   <Col md={{ padding: 20}}>
-            <Order
-            id="3"
-            drone="3"
-            donuts={[{id: 1, name:'Glazed', quantity: 1}, {id: 2, name:'Chocolate Frosted', quantity: 2},]}
-            address="400 Wilkins Avenue"
-          />
-  </Col>
-  
-   <Col md={{ padding: 20}}>
+            donuts={[{id: 1, name:'Glazed', quantity: 1}, {id: 2, name:'Chocolate Frosted', quantity: 2},{id: 3, name:'Boston Creme', quantity: 1}]}
+            address="400 Forbes Avenue"
+            status = "packing"
 
-            <Order
-            id="3"
-            drone="3"
-            donuts={[{id: 1, name:'Glazed', quantity: 1}, {id: 2, name:'Chocolate Frosted', quantity: 2},]}
-            address="400 Wilkins Avenue"
           />
-  </Col>
-         <Col md={{ padding: 20}}>
-          <Order
-            id="3"
-            drone="3"
-            donuts={[{id: 1, name:'Glazed', quantity: 1}, {id: 2, name:'Chocolate Frosted', quantity: 2},]}
-            address="400 Wilkins Avenue"
-          />
-    </Col>
-  </Row>
-</Container>
+  </Container> 
+
   </Tab>
+  <Tab eventKey="profile" title="Sent Out">
+      <Container> 
+       <Order
+            id="1"
+            drone="1"
+            donuts={[{id: 1, name:'Glazed', quantity: 1}, {id: 2, name:'Chocolate Frosted', quantity: 2},]}
+            address="400 Wilkins Avenue"
+            status = "sending"
+          />
+    <Order
+            id="2"
+            drone="2"
+            donuts={[{id: 1, name:'Glazed', quantity: 1}, {id: 2, name:'Chocolate Frosted', quantity: 2},{id: 3, name:'Boston Creme', quantity: 1}]}
+            address="400 Forbes Avenue"
+            status = "sending"
 
-</Tabs>
+          />
+     <Order
+            id="1"
+            drone="3"
+            donuts={[{id: 1, name:'Glazed', quantity: 1}, {id: 2, name:'Chocolate Frosted', quantity: 2},]}
+            address="400 Wilkins Avenue"
+            status = "sending"
+
+          />
+    <Order
+            id="2"
+            drone="1"
+            donuts={[{id: 1, name:'Glazed', quantity: 1}, {id: 2, name:'Chocolate Frosted', quantity: 2},{id: 3, name:'Boston Creme', quantity: 1}]}
+            address="400 Forbes Avenue"
+            status = "sending"
+
+          />
+
+    </Container>
+  </Tab>
+  <Tab eventKey="contact" title="Completed">
+      <Container> 
+       <Order
+            id="1"
+            drone="1"
+            donuts={[{id: 1, name:'Glazed', quantity: 1}, {id: 2, name:'Chocolate Frosted', quantity: 2},]}
+            address="400 Wilkins Avenue"
+            status = "sending"
+          />
+    <Order
+            id="2"
+            drone="2"
+            donuts={[{id: 1, name:'Glazed', quantity: 1}, {id: 2, name:'Chocolate Frosted', quantity: 2},{id: 3, name:'Boston Creme', quantity: 1}]}
+            address="400 Forbes Avenue"
+            status = "sending"
+
+          />
+     <Order
+            id="1"
+            drone="3"
+            donuts={[{id: 1, name:'Glazed', quantity: 1}, {id: 2, name:'Chocolate Frosted', quantity: 2},]}
+            address="400 Wilkins Avenue"
+            status = "sending"
+
+          />
+    <Order
+            id="2"
+            drone="1"
+            donuts={[{id: 1, name:'Glazed', quantity: 1}, {id: 2, name:'Chocolate Frosted', quantity: 2},{id: 3, name:'Boston Creme', quantity: 1}]}
+            address="400 Forbes Avenue"
+            status = "sending"
+
+          />
+    </Container>
+      </Tab>
+
+    </Tabs>
 
 
 

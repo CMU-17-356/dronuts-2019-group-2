@@ -4,6 +4,7 @@ import ReactDOM from "react-dom";
 import axios from "axios";
 import Header from "./components/Header";
 import Products from "./components/Products";
+
 import QuickView from "./components/QuickView";
 import "./scss/style.scss";
 
@@ -35,6 +36,7 @@ class ShopPage extends Component {
                   },
                   {
                     "id": 4,
+
                     "name": "Signature Sprinkles",
                     "price": 3.00,
                     "image": "/img/sprinkles.png",
@@ -62,6 +64,7 @@ class ShopPage extends Component {
 
   }
 
+
   financial = (x) => Number.parseFloat(x).toFixed(2);
 
   componentWillMount() {
@@ -69,7 +72,7 @@ class ShopPage extends Component {
     this.sumTotalItems(this.state.cart);
     
   }
-  
+
   // Add to Cart
   handleAddToCart(selectedProducts) {
     let cartItem = this.state.cart;

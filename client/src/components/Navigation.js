@@ -29,6 +29,7 @@ import Cookies from 'universal-cookie';
 
 
 class Navigation extends Component {
+
     constructor(props) {
     super(props);
     this.state = { loginOpen: false };
@@ -56,6 +57,7 @@ class Navigation extends Component {
     <Router>
 
         <div>
+
         <center> <Link to={'/home'}> <img src={logo} alt="Donut" className="logo" height="80" /> </Link> </center>
 
           <nav className="navbar navbar-expand-lg ">
@@ -69,6 +71,7 @@ class Navigation extends Component {
             <li className="login-button nav-link navbarx" onClick={this.logout}>Logout</li> :
             <li className="login-button nav-link navbarx" onClick={this.toggleLogin}>Login</li> }
           </ul>
+
           </nav>
 
         <Login
