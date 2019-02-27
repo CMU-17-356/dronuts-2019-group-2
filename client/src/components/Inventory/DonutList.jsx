@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
 import Donut from './Donut.jsx';
-
-import chocofrosted from '../../img/chocofrosted.jpg'
-import bostoncream from '../../img/bostoncream.jpg'
 import { Container, Row, Col } from 'react-bootstrap';
 
 class DonutList extends Component {
