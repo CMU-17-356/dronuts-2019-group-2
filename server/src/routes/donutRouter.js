@@ -5,15 +5,15 @@ donutRouter.route('/')
     .get((req, res) => {
         Donut.find({}, (err, donuts) => {
             res.json(donuts)
-        })  
+        })
     })
     .post((req, res) => {
         let donut = new Donut(req.body);
         donut.save();
-        res.status(201).send(donut) 
+        res.status(201).send(donut)
     })
 
-// Middleware 
+// Middleware
 donutRouter.use('/:donutId', (req, res, next)=>{
     Donut.findById( req.params.donutId, (err,donut)=>{
         if(err)
@@ -28,12 +28,12 @@ donutRouter.use('/:donutId', (req, res, next)=>{
 donutRouter.route('/:donutId')
     .get((req, res) => {
         res.json(req.donut)
-    }) // end get Donuts/:donutId 
+    }) // end get Donuts/:donutId
     .put((req,res) => {
         req.donut.flavor = req.body.flavor;
         req.donut.price = req.body.price;
         req.donut.numAvailable = req.body.numAvailable;
-        req.donut.picture = req.body.picture;
+        req.donut.image = req.body.image;
         req.donut.description = req.body.description;
         req.donut.save()
         res.json(req.donut)
@@ -58,5 +58,5 @@ donutRouter.route('/:donutId')
             }
         })
     })//delete
-	 
+
 export default donutRouter;

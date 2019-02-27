@@ -1,0 +1,29 @@
+
+.donut-form {
+  margin: auto;
+  margin-top: 5%;
+  width: 50%;
+  border-radius: 5px;
+  background-color: #F987C5;
+  color: white;
+  padding: 10px;
+}
+
+h2 {
+  color: white;
+  margin: auto;
+}
+
+form {
+  padding: 10px;
+}
+
+.left {
+  margin-left: 0;
+  padding-top: 5px;
+}
+
+.right {
+  margin-right: 0;
+  float: right;
+}

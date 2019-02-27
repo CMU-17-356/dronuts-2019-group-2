@@ -4,14 +4,10 @@ import ReactDOM from "react-dom";
 import axios from "axios";
 import Header from "./components/Header";
 import Products from "./components/Products";
-import Footer from "./components/Footer";
+
 import QuickView from "./components/QuickView";
 import "./scss/style.scss";
 
-
-import glazed from '../../img/glazed.jpg'
-import chocofrosted from '../../img/chocofrosted.jpg'
-import bostoncream from '../../img/bostoncream.jpg'
 import { Container, Row, Col } from 'react-bootstrap';
 
 
@@ -40,7 +36,8 @@ class ShopPage extends Component {
                   },
                   {
                     "id": 4,
-                    "name": "Signiture Sprinkles",
+
+                    "name": "Signature Sprinkles",
                     "price": 3.00,
                     "image": "/img/sprinkles.png",
                   }
@@ -66,16 +63,16 @@ class ShopPage extends Component {
     this.closeModal = this.closeModal.bind(this);
 
   }
+
+
+  financial = (x) => Number.parseFloat(x).toFixed(2);
+
   componentWillMount() {
     this.sumTotalAmount(this.state.cart);
     this.sumTotalItems(this.state.cart);
     
   }
-  componentWillReceiveProps() {
-    this.setState({
-      cart: JSON.parse(localStorage.getItem("cart"))
-    });
-  }
+
   // Add to Cart
   handleAddToCart(selectedProducts) {
     let cartItem = this.state.cart;

@@ -22,12 +22,13 @@ class Main extends Component {
     return (
       <HashRouter>
         <div>
-          <Navigation />
-          <div className = "content"> </div>
-          
-          <div className="footer"> <br />
-            <p> &copy; Dronut Team 2</p>
-          </div>
+
+
+        <Navigation />
+        <div className="content"> </div>
+            <div className="footer"> <br />
+              <p> &copy; Dronut Team 2</p>
+            </div>
         </div>
       </HashRouter>
     );
