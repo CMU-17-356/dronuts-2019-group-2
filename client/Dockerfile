@@ -8,6 +8,7 @@ WORKDIR /usr/src/app
 COPY . .
 RUN npm install
 RUN npm uninstall ajv
+RUN npm rebuild node-sass
 RUN npm install ajv@6.8.1
 
 # Copy App Source

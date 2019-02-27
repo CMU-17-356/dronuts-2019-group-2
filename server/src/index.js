@@ -7,7 +7,6 @@ const cors = require('cors');
 import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
 import donutRouter from './routes/donutRouter';
-import userRouter from './routes/userRouter';
 
 
 // Constants
