@@ -17,13 +17,16 @@ class DonutEdit extends Component {
   componentDidMount() {
     const { id } = this.props.match.params
     fetch('http://0.0.0.0:8080/api/donuts/' + id)
-    .then(donut => {
+    .then(result => {
+      return result.json();
+    }).then(donut => {
       this.setState({flavor: donut.flavor});
       this.setState({price: donut.price});
       this.setState({numAvailable: donut.numAvailable});
-      this.setState({picture: donut.picture});
+      this.setState({image: donut.image});
       this.setState({description: donut.description});
     })
+    console.log(this.state);
   }
 
   render() {

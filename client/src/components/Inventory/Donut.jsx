@@ -10,7 +10,7 @@ class Donut extends Component {
         <div className="donut-img" id={id}>
           <img src={image} alt="Donut" height="80" width="80" onClick={this.onShowClick}/>
           <h3 className="donut-name">{flavor}</h3>
-          <h3 className="donut-name">{price}</h3>
+          <h3 className="donut-name">${price}</h3>
         </div>
         <div className="donut-info">
           <p>{description}</p>
