@@ -3,7 +3,7 @@ services:
   server:
     build:
       context: ./server/
-    command: /usr/app/node_modules/.bin/nodemon src/index.js
+    command: /usr/app/node_modules/.bin/nodemon  --exec babel-node src/index.js
     volumes:
       - ./server/:/usr/app
       - /usr/app/node_modules
@@ -11,11 +11,7 @@ services:
       - "8080:8080"
     # env_file: ./server/.env # TODO - uncomment this to auto-load your .env file!
     environment:
-      DATABASE_URL: postgres://dronut:dronut@db:5432/api
       PORT: 8080
-
-    links:
-      - db
   client:
     build:
       context: ./client/
@@ -27,13 +23,5 @@ services:
       - server
     ports:
       - "3000:3000"
-  db: 
-    image: postgres
-    expose: 
-      - 5432
-    environment:
-      POSTGRES_PASSWORD: dronut
-      POSTGRES_USER: dronut
-      POSTGRES_DB: api
 
 
