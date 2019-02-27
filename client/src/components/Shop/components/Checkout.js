@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import EmptyCart from "../empty-states/EmptyCart";
 import CSSTransitionGroup from "react-transition-group/CSSTransitionGroup";
 import "../scss/style.scss";
+import { Link } from 'react-router-dom';
 
 
 
@@ -196,14 +197,17 @@ class Textarea extends React.Component {
 
 // Create component for form
 class Form extends React.Component {
+  constructor(props) {
+    super(props);
+  }
   render() {
     return (
-      <form method='' action=''>
+      <form method='' action='' onSubmit= { this.props.onSubmit }>
         <Input
           hasLabel='true'
           htmlFor='textInput'
           label='Name'
-          required='true'
+          required={true}
           type='text'
         />
         
@@ -211,7 +215,7 @@ class Form extends React.Component {
           hasLabel='true'
           htmlFor='emailInput'
           label='Email'
-          required='true'
+          required={true}
           type='email'
         />
         
@@ -219,7 +223,7 @@ class Form extends React.Component {
           hasLabel='true'
           htmlFor='textInput'
           label='Phone Number'
-          required='true'
+          required={true}
           type="text"
           
         />
@@ -228,7 +232,7 @@ class Form extends React.Component {
           hasLabel='true'
           htmlFor='textInput'
           label='Address'
-          required='true'
+          required={true}
           type='text'
         />
         
@@ -237,14 +241,14 @@ class Form extends React.Component {
           htmlFor='select'
           label='Delivery Time'
           options='ASAP, 2:00pm, 2:30pm, 3:00pm, 3:30pm, 4:00pm'
-          required='true'
+          required={true}
         />
         
         
         <Button
           type='submit'
           value='submit'
-          text='Send form'
+          text='Go to payment page >>'
         />
       </form>
     );
@@ -259,6 +263,8 @@ class Checkout extends Component {
       cart: JSON.parse(localStorage.getItem("cart")) ? JSON.parse(localStorage.getItem("cart")) : [],
       totalAmount: 0
     };
+    this.createTransaction = this.createTransaction.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   financial = (x) => Number.parseFloat(x).toFixed(2);
@@ -272,12 +278,48 @@ class Checkout extends Component {
     this.setState({
       totalAmount: total
     });
+    console.log("summmed");
   }
+
+  async createTransaction() {
+    const createTransactionUrl = 'http://credit.17-356.isri.cmu.edu/api/transactions'
+    let promise = fetch(createTransactionUrl, {
+      method: 'POST',
+      body: `companyId=2&amount=${this.state.totalAmount}`,
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+    });
+
+    let response = await promise;
+    let result = await response.json();
+    console.log(result.id);
+    return await result.id;
+  }
+
   componentWillMount(){
-    this.sumTotalAmount();
+      this.sumTotalAmount();
+  }
+
+  async handleSubmit(e){
+    e.preventDefault();
+    const createTransactionUrl = 'http://credit.17-356.isri.cmu.edu/api/transactions'
+    let promise = fetch(createTransactionUrl, {
+      method: 'POST',
+      body: `companyId=2&amount=${this.state.totalAmount}`,
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+    });
+
+    let response = await promise;
+    let result = await response.json();
+    window.open(`http://credit.17-356.isri.cmu.edu/?transaction_id=${result.id}`);
 
   }
+
   render() {
+
     let cartItems;
     cartItems = this.state.cart.map(product => {
       return (
@@ -322,7 +364,7 @@ class Checkout extends Component {
             
         <div className="form-container">
           <div className="checkout-form">
-            <Form />
+            <Form onSubmit={this.handleSubmit}/>
           </div>
         </div>
 

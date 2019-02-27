@@ -47,7 +47,6 @@ class Navigation extends Component {
   render() {
 
     const cookies = new Cookies();
-    cookies.get('admin') ? console.log(cookies.get('admin')) : console.log("DIDNT WORK");
 
     return (
     <Router>

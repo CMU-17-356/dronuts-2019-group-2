@@ -10,7 +10,8 @@ class Home extends Component {
 
     return (
 
-          <Jumbotron>
+          <div className="main-hero">
+            <div className="hero-text">
             <center> <h1>Welcome to Dronuts</h1>
             <p>
               We are a startup company that delivers donuts to you with drones!!! 
@@ -24,7 +25,8 @@ Shop Now</Button></Link>
             </p>
              </center>
 
-          </Jumbotron>
+          </div>
+          </div>
 
     );
   }
