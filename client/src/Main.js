@@ -12,10 +12,10 @@ class Main extends Component {
     return (
       <HashRouter>
         <div>
-        
+
         <Navigation />
-        <div class = "content"> </div>
-            <div class="footer"> <br />
+        <div className="content"> </div>
+            <div className="footer"> <br />
               <p> &copy; Dronut Team 2</p>
             </div>
         </div>

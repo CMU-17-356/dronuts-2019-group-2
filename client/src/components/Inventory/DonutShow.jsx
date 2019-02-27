@@ -1,27 +1,27 @@
 import React, { Component } from 'react';
 
 class DonutShow extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props)
+
     this.state = {
-      flavor: "",
-      price: "",
-      numAvailable: "",
-      picture: "",
-      description: ""
-    }
+      flavor: '',
+      price: 0,
+      numAvailable: 0,
+      image: '', // uri resource
+      description: ''
+    };
   }
 
   componentDidMount() {
-    fetch('http://localhost:3000/api/donuts/' + this.props.id)
+    const { id } = this.props.match.params
+    fetch('http://0.0.0.0:8080/api/donuts/' + id)
     .then(donut => {
-      return donut.json();
-    }).then(data => {
-      this.setState({flavor: data.donut.flavor});
-      this.setState({price: data.donut.price});
-      this.setState({numAvailable: data.donut.numAvailable});
-      this.setState({picture: data.donut.picture});
-      this.setState({description: data.donut.description});
+      this.setState({flavor: donut.flavor});
+      this.setState({price: donut.price});
+      this.setState({numAvailable: donut.numAvailable});
+      this.setState({picture: donut.picture});
+      this.setState({description: donut.description});
     })
   }
 

@@ -5,47 +5,59 @@ class DonutForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      flavor: '',
-      price: '',
-      numAvailable: '',
-      image: '', // uri resource
-      description: ''
+      flavor: this.props.flavor,
+      price: this.props.price,
+      numAvailable: this.props.numAvailable,
+      image: this.props.image, // uri resource
+      description: this.props.description
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleInputChange(event) {
-    this.setState({value: event.target.value});
+    const name = event.target.name;
+    this.setState({[name]: event.target.value});
   }
 
   handleSubmit(event) {
     event.preventDefault();
 
-    fetch('http://localhost:3000/api/', {
+    console.log(JSON.stringify({
+      "flavor": this.state.flavor,
+      "price": this.state.price,
+      "numAvailable": this.state.numAvailable,
+      "image": this.state.image,
+      "description": this.state.description
+    }));
+
+    fetch('http://0.0.0.0:8080/api/donuts/', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        flavor: this.state.flavor,
-        price: this.state.price,
-        numAvailable: this.state.numAvailable,
-        image: this.state.image,
-        description: this.state.description
+        "flavor": this.state.flavor,
+        "price": this.state.price,
+        "numAvailable": this.state.numAvailable,
+        "image": this.state.image,
+        "description": this.state.description
       })
-    })
+    }).then(res => res.json())
+    .then(response => console.log('Success:', JSON.stringify(response)))
+    .catch(error => console.error('Error:', error));
 
     alert("Donut added!");
   }
 
   render() {
-    this.state = this.props
 
     return (
       <div className="donut-form">
         <h2>Add a Donut</h2>
+        <hr />
         <form onSubmit={this.handleSubmit}>
           <label className="left">
             Flavor:
@@ -63,7 +75,7 @@ class DonutForm extends Component {
           <input
             className="right"
             name="price"
-            type="text"
+            type="number"
             value={this.state.price}
             onChange={this.handleInputChange} />
           <br />
@@ -73,7 +85,7 @@ class DonutForm extends Component {
           <input
             className="right"
             name="numAvailable"
-            type="text"
+            type="number"
             value={this.state.numAvailable}
             onChange={this.handleInputChange} />
           <br />

@@ -41,8 +41,8 @@ class Navigation extends Component {
             <Route path="/home" component={Home}/>
             <Route path="/inventory" component={DonutList}/>
             <Route path="/add" component={DonutNew}/>
-            <Route path="/edit" component={DonutEdit}/>
-            <Route path="/show" component={DonutShow}/>
+            <Route path="/edit/:id" component={DonutEdit}/>
+            <Route path="/show/:id" component={DonutShow}/>
 
           </Switch>
         </div>
