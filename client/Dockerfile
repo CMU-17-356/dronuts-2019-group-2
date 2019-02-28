@@ -1,4 +1,4 @@
-FROM node:8-alpine
+FROM node:11.9.0-alpine
 MAINTAINER dronuts_4
 
 # Change working directory
@@ -8,8 +8,8 @@ WORKDIR /usr/src/app
 COPY . .
 RUN npm install
 RUN npm uninstall ajv
-RUN npm rebuild node-sass
 RUN npm install ajv@6.8.1
+
 
 # Copy App Source
 #TODO Run any build scripts here
