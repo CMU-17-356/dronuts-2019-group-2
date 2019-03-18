@@ -5,7 +5,7 @@ FROM node:9.4.0-alpine as client
 
 WORKDIR /usr/app/client/
 COPY client/package*.json ./
-RUN npm install --no-optional polymer-cli -g
+RUN npm install --no-optional
 COPY client/ ./
 RUN npm run build
 RUN npm rebuild node-sass
