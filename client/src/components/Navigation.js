@@ -65,8 +65,11 @@ class Navigation extends Component {
             <li><Link to={'/home'} className="nav-link navbarx"> Home </Link></li>
             {(cookies.get('admin') == 'true') ? <li><Link to={'/orders'} className="nav-link navbarx">Orders</Link></li> : "" }
             <li><Link to={'/shop'} className="nav-link navbarx">Shop</Link></li>
-            <li><Link to={'/inventory'} className="nav-link navbarx">Inventory</Link></li>
-            <li><Link to={'/add'} className="nav-link navbarx">Add Donut</Link></li>
+
+            {(cookies.get('admin') == 'true') ? <li><Link to={'/inventory'} className="nav-link navbarx">Inventory</Link></li> : "" }
+
+            {(cookies.get('admin') == 'true') ? <li><Link to={'/add'} className="nav-link navbarx">Add Donut</Link></li> : "" }
+
             {(cookies.get('admin') == 'true') ?
             <li className="login-button nav-link navbarx" onClick={this.logout}>Logout</li> :
             <li className="login-button nav-link navbarx" onClick={this.toggleLogin}>Login</li> }

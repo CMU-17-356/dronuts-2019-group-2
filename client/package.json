@@ -12,6 +12,7 @@
     "react-dom": "^16.8.3",
     "react-router-dom": "^4.3.1",
     "react-scripts": "^2.1.8",
+
     "react-transition-group": "^1.1.2",
     "typeface-roboto": "0.0.54",
     "universal-cookie": "^3.0.7"
@@ -35,6 +36,7 @@
     "sass-loader": "^7.0.3",
     "style-loader": "^0.21.0",
     "url-loader": "^1.1.2"
+
   },
   "scripts": {
     "start": "react-scripts start",
