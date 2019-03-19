@@ -9,7 +9,7 @@ const orderModel = new Schema({
 	status: {type: String},
 	lat: {type: String},
 	long: {type: String},
-
+	address: {type: String}
 
 });
 export default mongoose.model('orders', orderModel)
