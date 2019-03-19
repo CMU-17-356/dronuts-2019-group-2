@@ -11,7 +11,7 @@
     "react-custom-scrollbars": "^4.1.1",
     "react-dom": "^16.8.3",
     "react-router-dom": "^4.3.1",
-    "react-scripts": "2.1.5",
+    "react-scripts": "^2.1.8",
     "react-transition-group": "^1.1.2",
     "typeface-roboto": "0.0.54",
     "universal-cookie": "^3.0.7"

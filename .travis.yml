@@ -14,7 +14,8 @@ env:
     - DOCKER_MACHINE_NAME="group-2"
 
 script:
-  - npm test
+  - cd ./server && npm test
+  - cd ..
   - docker-compose  --file docker-compose.prod.yml build
 
 deploy:
