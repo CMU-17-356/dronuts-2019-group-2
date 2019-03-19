@@ -1,4 +1,4 @@
-FROM node:8-alpine
+FROM node:11.9.0-stretch
 MAINTAINER dronuts_4
 
 # Change working directory
