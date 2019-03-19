@@ -14,7 +14,9 @@ env:
     - DOCKER_MACHINE_NAME="group-2"
 
 script:
-  - npm test --prefix server
+  - cd ./server 
+  - ./node_modules/.bin/jest
+  - cd ..
   - docker-compose  --file docker-compose.prod.yml build
 
 deploy:
