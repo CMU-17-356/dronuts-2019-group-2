@@ -18,15 +18,15 @@ class Order extends Component {
   }
 
 
-  
+
   render() {
-    const { id, drone, donuts, address, status } = this.props;
-    const order = donuts.map((donut, key) =>
+    const { id, items, paid, status } = this.props;
+    const order = items.map((donut, key) =>
       <li key={donut.id}>
         {donut.name}: {donut.quantity}
       </li>
     )
-    
+
     if (this.state.isHidden) {
       return (<div> </div>);
 
@@ -37,14 +37,14 @@ class Order extends Component {
     return (
       // <li id={id}>
 
-    
+
         <span>
 
           <div className="drone">
-            <h3>Drone {drone}</h3>
-          </div>          
-          <div className="order">      
-            <h5>Deliver to: {address}</h5>
+            <h3>Drone 1</h3>
+          </div>
+          <div className="order">
+            <h5>Deliver to: 5000 Forbes Ave</h5>
             <ul>
               {order}
             </ul>
@@ -53,8 +53,8 @@ class Order extends Component {
               Complete order
 
           </Button>
-   
-        
+
+
                <br />
           <br />
         </span>
@@ -66,20 +66,20 @@ class Order extends Component {
           return (
       // <li id={id}>
 
-    
+
         <span>
 
           <div className="drone">
-            <h3>Drone {drone}</h3>
-          </div>          
-          <div className="order">      
-            <h5>Deliver to: {address}</h5>
+            <h3>Drone 1</h3>
+          </div>
+          <div className="order">
+            <h5>Deliver to: 5000 Forbes Ave</h5>
             <ul>
               {order}
             </ul>
           </div>
-   
-        
+
+
                <br />
           <br />
         </span>
