@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const Schema = mongoose.Schema; 
+const Schema = mongoose.Schema;
 
 const orderModel = new Schema({
 	date: {type: Timestamp},
@@ -9,9 +9,7 @@ const orderModel = new Schema({
 	status: {type: String},
 	lat: {type: String},
 	long: {type: String},
-
-
+	address: {type: String}
+	
 });
 export default mongoose.model('orders', orderModel)
-
-
