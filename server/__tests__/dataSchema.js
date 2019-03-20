@@ -1,6 +1,8 @@
 const Joi = require('joi');
 
-
+test('trivial test', () => {
+  expect(3).toBe(3);
+});
 
 const droneData = Joi.object({
 		droneID: Joi.number().integer().positive().required(),

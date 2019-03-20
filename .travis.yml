@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-  - "8"
+  - "11.9.0"
 dist: xenial
 sudo: required
 services:
@@ -14,8 +14,9 @@ env:
     - DOCKER_MACHINE_NAME="group-2"
 
 script:
-  - npm cache clear
+  - cd ./server && npm install
   - npm test
+  - cd ..
   - docker-compose  --file docker-compose.prod.yml build
 
 deploy:
