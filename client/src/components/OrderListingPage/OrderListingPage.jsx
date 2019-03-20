@@ -40,6 +40,7 @@ class OrderListingPage extends Component {
             items={order.items}
             paid={order.paid}
             status={order.status}
+            address={order.address}
           />
         </Row>
       );

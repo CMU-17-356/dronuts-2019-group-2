@@ -40,9 +40,9 @@ class Datalist extends React.Component {
           htmlFor={this.props.htmlFor}
           label={this.props.label}
         />
-        
+
         <input list={this.props.htmlFor} />
-          
+
         <datalist
           defaultValue=''
           id={this.props.htmlFor}
@@ -155,7 +155,7 @@ class Select extends React.Component {
           htmlFor={this.props.htmlFor}
           label={this.props.label}
         />
-        
+
         <select
           defaultValue=''
           id={this.props.htmlFor}
@@ -195,79 +195,25 @@ class Textarea extends React.Component {
   }
 };
 
-// Create component for form
-class Form extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-  render() {
-    return (
-      <form method='' action='' onSubmit= { this.props.onSubmit }>
-        <Input
-          hasLabel='true'
-          htmlFor='textInput'
-          label='Name'
-          required={true}
-          type='text'
-        />
-        
-        <Input
-          hasLabel='true'
-          htmlFor='emailInput'
-          label='Email'
-          required={true}
-          type='email'
-        />
-        
-        <Input
-          hasLabel='true'
-          htmlFor='textInput'
-          label='Phone Number'
-          required={true}
-          type="text"
-          
-        />
-        
-        <Input
-          hasLabel='true'
-          htmlFor='textInput'
-          label='Address'
-          required={true}
-          type='text'
-        />
-        
-        <Select
-          hasLabel='true'
-          htmlFor='select'
-          label='Delivery Time'
-          options='ASAP, 2:00pm, 2:30pm, 3:00pm, 3:30pm, 4:00pm'
-          required={true}
-        />
-        
-        
-        <Button
-          type='submit'
-          value='submit'
-          text='Go to payment page >>'
-        />
-      </form>
-    );
-  }
-};
-
-
 class Checkout extends Component {
   constructor(props) {
     super(props);
     this.state = {
       cart: JSON.parse(localStorage.getItem("cart")) ? JSON.parse(localStorage.getItem("cart")) : [],
-      totalAmount: 0
+      totalAmount: 0,
+      address: ''
     };
+    this.handleInputChange = this.handleInputChange.bind(this);
     this.createTransaction = this.createTransaction.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   financial = (x) => Number.parseFloat(x).toFixed(2);
+
+  handleInputChange(event) {
+    const name = event.target.name;
+    this.setState({[name]: event.target.value});
+  }
 
   sumTotalAmount() {
     let total = 0;
@@ -312,6 +258,15 @@ class Checkout extends Component {
       },
     });
 
+    data = {
+      items: this.state.cart,
+      paid: true,
+      status: 'packing',
+      lat: '',
+      long: '',
+      address: this.state.address
+    };
+
     let response = await promise;
     let result = await response.json();
     window.open(`http://credit.17-356.isri.cmu.edu/?transaction_id=${result.id}`);
@@ -335,7 +290,7 @@ class Checkout extends Component {
             </p>
             <p className="amount">{this.financial(product.quantity * product.price)}</p>
           </div>
-          
+
         </li>
       );
     });
@@ -360,11 +315,62 @@ class Checkout extends Component {
     }
     return (
         <div className="checkout">
-            
-            
+
+
         <div className="form-container">
           <div className="checkout-form">
-            <Form onSubmit={this.handleSubmit}/>
+            <form method='' action='' onSubmit= { this.props.onSubmit }>
+              <Input
+                hasLabel='true'
+                htmlFor='textInput'
+                label='Name'
+                required={true}
+                type='text'
+
+              />
+
+              <Input
+                hasLabel='true'
+                htmlFor='emailInput'
+                label='Email'
+                required={true}
+                type='email'
+              />
+
+              <Input
+                hasLabel='true'
+                htmlFor='textInput'
+                label='Phone Number'
+                required={true}
+                type="text"
+
+              />
+
+              <Input
+                hasLabel='true'
+                htmlFor='textInput'
+                label='Address'
+                required={true}
+                type='text'
+                name='address'
+                value={this.state.address}
+              />
+
+              <Select
+                hasLabel='true'
+                htmlFor='select'
+                label='Delivery Time'
+                options='ASAP, 2:00pm, 2:30pm, 3:00pm, 3:30pm, 4:00pm'
+                required={true}
+              />
+
+
+              <Button
+                type='submit'
+                value='submit'
+                text='Go to payment page >>'
+              />
+            </form>
           </div>
         </div>
 
@@ -376,7 +382,7 @@ class Checkout extends Component {
 
         </div>
 
-       
+
     );
   }
 }
