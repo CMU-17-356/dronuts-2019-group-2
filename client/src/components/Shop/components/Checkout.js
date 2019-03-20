@@ -258,7 +258,7 @@ class Checkout extends Component {
       },
     });
 
-    data = {
+    const data = {
       items: this.state.cart,
       paid: true,
       status: 'packing',
