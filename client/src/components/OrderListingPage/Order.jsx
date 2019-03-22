@@ -12,20 +12,22 @@ class Order extends Component {
   }
 
   render() {
-    const { id, items, paid, status, address } = this.props;
+    const { id, items, paid, status, lat, long } = this.props;
     // const order = items.map((donut, key) =>
     //   <li key={donut}>
     //     {donut}
     //   </li>
     // )
+    
 
     return (
       <span>
         <div className="drone">
           <h3>Drone</h3>
+          <h5>Status: {status}</h5>
         </div>
         <div className="order">
-          <h5>Deliver to: {address}</h5>
+          <h5>Deliver to: {"("+lat+", "+long+")"}</h5>
           <ul>
             {items}
           </ul>

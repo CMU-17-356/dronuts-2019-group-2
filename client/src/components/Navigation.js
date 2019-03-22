@@ -72,7 +72,7 @@ class Navigation extends Component {
 
             {(cookies.get('admin') == 'true') ?
             <li className="login-button nav-link navbarx" onClick={this.logout}>Logout</li> :
-            <li className="login-button nav-link navbarx" onClick={this.toggleLogin}>Login</li> }
+            <li  onClick={this.toggleLogin}><a className="login-button nav-link navbarx">Login</a></li> }
           </ul>
 
           </nav>

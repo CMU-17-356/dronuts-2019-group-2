@@ -22,7 +22,7 @@ class OrderListingPage extends Component {
   }
 
   render() {
-    const { orders } = this.state
+    const orders = this.state.orders;
 
     if (orders.length === 0) {
       return (
@@ -31,6 +31,8 @@ class OrderListingPage extends Component {
         </div>
       )
     }
+    console.log("orders:");
+    console.log(orders);
 
     const items = orders.map(function(order){
       return (
@@ -40,7 +42,8 @@ class OrderListingPage extends Component {
             items={order.items}
             paid={order.paid}
             status={order.status}
-            address={order.address}
+            lat={order.lat}
+            long={order.long}
           />
         </Row>
       );
