@@ -1,9 +1,9 @@
-FROM node:9.4.0-alpine
+FROM node:11.9.0-stretch
 
 WORKDIR /usr/app
 
 COPY package*.json ./
-RUN npm install -qy
+RUN npm install --verbose
 
 COPY . .
 

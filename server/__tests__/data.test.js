@@ -1,6 +1,9 @@
 
 var data = require('./dataSchema.js');
 
+test('trivial test', () => {
+  expect(3).toBe(3);
+});
 
 describe('Test donut', () => {
 
