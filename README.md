@@ -6,13 +6,13 @@ Find our project here: http://104.42.146.209/
 
 ## Running the application locally: ##
 To run the application on your local computer, run 
-`docker-compose down
-docker-compose build
-docker-compose up `
+`docker-compose down` <br>
+`docker-compose build` <br>
+` docker-compose up ` <br>
 
 To run the prod version of this application, add `--file docker-compose.prod.yml` to the above commands or more specifically:
-`docker-compose  --file docker-compose.prod.yml build
-docker-compose  --file docker-compose.prod.yml up`
+`docker-compose  --file docker-compose.prod.yml build` <br>
+`docker-compose  --file docker-compose.prod.yml up` <br>
 
 you can also choose to run npm start in both the client and server folders as an alternative. 
 
