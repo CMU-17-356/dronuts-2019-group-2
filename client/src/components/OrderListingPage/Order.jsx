@@ -5,6 +5,7 @@ class Order extends Component {
   constructor () {
     super();
     this.onOrderClick = this.onOrderClick.bind(this);
+    this.state = {isHidden: false};
   }
 
   onOrderClick() {
@@ -18,9 +19,12 @@ class Order extends Component {
     //     {donut}
     //   </li>
     // )
-    
+    if (this.state.isHidden){
+      return(<span></span>);
+    }
 
     return (
+      
       <span>
         <div className="drone">
           <h3>Drone</h3>
@@ -41,6 +45,7 @@ class Order extends Component {
         <br />
         <br />
       </span>
+    
     );
   }
 }
