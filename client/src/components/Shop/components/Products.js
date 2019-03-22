@@ -16,11 +16,11 @@ class Products extends Component {
       .map(product => {
         return (
           <Product
-            key={product.id}
+            key={product._id}
             price={product.price}
-            name={product.name}
+            name={product.flavor}
             image={product.image}
-            id={product.id}
+            id={product._id}
             addToCart={this.props.addToCart}
             productQuantity={this.props.productQuantity}
             updateQuantity={this.props.updateQuantity}

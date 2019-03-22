@@ -16,31 +16,32 @@ class ShopPage extends Component {
     super();
     this.state = {
       products: [
-                  // {
-                  //   "id": 1,
-                  //   "name": "Original Glazed",
-                  //   "price": 2,
-                  //   "image": "/img/glazed.jpg",
-                  // },
-                  // {
-                  //   "id": 2,
-                  //   "name": "Chocolate Frosted",
-                  //   "price": 3.00,
-                  //   "image": "/img/chocofrosted.jpg",
-                  // },
-                  // {
-                  //   "id": 3,
-                  //   "name": "Boston Cream",
-                  //   "price": 4.00,
-                  //   "image": "/img/bostoncream.jpg",
-                  // },
-                  // {
-                  //   "id": 4,
-                  //
-                  //   "name": "Signature Sprinkles",
-                  //   "price": 3.00,
-                  //   "image": "/img/sprinkles.png",
-                  // }
+
+                  {
+                    "id": 1,
+                    "flavor": "Loading...",
+                    "price": 0,
+                    "image": "/img/glazed.jpg",
+                  },
+                  {
+                    "id": 2,
+                    "flavor": "Loading...",
+                    "price": 0,
+                    "image": "/img/glazed.jpg",
+                  },
+                  {
+                    "id": 3,
+                    "flavor": "Loading...",
+                    "price": 0,
+                    "image": "/img/glazed.jpg",
+                  },
+                  {
+                    "id": 4,
+                    "flavor": "Loading...",
+                    "price": 0,
+                    "image": "/img/glazed.jpg",
+                  }
+
                 ],
       cart: JSON.parse(localStorage.getItem("cart")) ? JSON.parse(localStorage.getItem("cart")) : [],
       totalItems: 0,
@@ -81,15 +82,26 @@ class ShopPage extends Component {
       console.log("state", this.state.products);
     })
   }
+  componentDidMount() {
+    fetch('http://localhost:3000/api/donuts/')
+    .then(results => {
+      return results.json();
+    }).then(data => {
+      this.setState({products: data});
+      console.log("state", this.state.products);
+    })
+  }
 
   // Add to Cart
   handleAddToCart(selectedProducts) {
+    console.log("in add to cart");
+    console.log(selectedProducts);
     let cartItem = this.state.cart;
-    let productID = selectedProducts.id;
+    let productID = selectedProducts._id;
     let productQty = selectedProducts.quantity;
     if (this.checkProduct(productID)) {
       console.log("hi");
-      let index = cartItem.findIndex(x => x.id == productID);
+      let index = cartItem.findIndex(x => x._id == productID);
       cartItem[index].quantity =
         Number(cartItem[index].quantity) + Number(productQty);
       this.setState({
