@@ -11,10 +11,10 @@ orderRouter.route('/')
     .post((req, res) => {
         let order = new Order(req.body);
         order.save();
-        res.status(201).send(order) 
+        res.status(201).send(order)
     })
 
-// Middleware 
+// Middleware
 orderRouter.use('/:orderId', (req, res, next)=>{
     Order.findById( req.params.orderId, (err,order)=>{
         if(err)
@@ -29,7 +29,7 @@ orderRouter.use('/:orderId', (req, res, next)=>{
 orderRouter.route('/:orderId')
     .get((req, res) => {
         res.json(req.order)
-    }) // end get Orders/:orderId 
+    }) // end get Orders/:orderId
     .put((req,res) => {
         req.order.date = req.body.date;
         req.order.items = req.body.items;
@@ -37,6 +37,7 @@ orderRouter.route('/:orderId')
         req.order.status = req.body.status;
         req.order.lat = req.body.lat;
         req.order.long = req.body.long;
+        req.order.address = req.body.address;
         req.order.save()
         res.json(req.order)
     })
@@ -60,5 +61,5 @@ orderRouter.route('/:orderId')
             }
         })
     })//delete
-	 
+
 export default orderRouter;

@@ -7,6 +7,7 @@ const cors = require('cors');
 import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
 import donutRouter from './routes/donutRouter';
+import orderRouter from './routes/orderRouter';
 
 
 // Constants
@@ -29,6 +30,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // API routes
 app.use('/api/donuts', donutRouter);
+app.use('/api/orders', orderRouter);
 
 
 app.use(express.static(CLIENT_BUILD_PATH));
