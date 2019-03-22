@@ -13,11 +13,11 @@ class Order extends Component {
 
   render() {
     const { id, items, paid, status, address } = this.props;
-    const order = items.map((donut, key) =>
-      <li key={donut.id}>
-        {donut.name}: {donut.quantity}
-      </li>
-    )
+    // const order = items.map((donut, key) =>
+    //   <li key={donut}>
+    //     {donut}
+    //   </li>
+    // )
 
     return (
       <span>
@@ -27,7 +27,7 @@ class Order extends Component {
         <div className="order">
           <h5>Deliver to: {address}</h5>
           <ul>
-            {order}
+            {items}
           </ul>
         </div>
         {status == "packing" &&
@@ -35,7 +35,7 @@ class Order extends Component {
             Complete order
           </Button>
         }
-        
+
         <br />
         <br />
       </span>
