@@ -258,19 +258,41 @@ class Checkout extends Component {
       },
     });
 
-    const data = {
-      items: this.state.cart,
-      paid: true,
-      status: 'packing',
-      lat: '',
-      long: '',
-      address: this.state.address
-    };
-
     let response = await promise;
     let result = await response.json();
     window.open(`http://credit.17-356.isri.cmu.edu/?transaction_id=${result.id}`);
 
+  }
+
+  handleFormPostData(form) {
+    const data = {
+      items: form.cart,
+      paid: true,
+      status: 'packing',
+      lat: '',
+      long: '',
+      address: form.address
+    };
+
+    fetch('http://0.0.0.0:8080/api/orders/', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        "items": data.items,
+        "paid": data.paid,
+        "status": data.status,
+        "lat": data.lat,
+        "long": data.long,
+        "address": data.address
+      })
+    }).then(res => res.json())
+    .then(response => console.log('Success:', JSON.stringify(response)))
+    .catch(error => console.error('Error:', error));
+
+    alert("Order added!");
   }
 
   render() {
